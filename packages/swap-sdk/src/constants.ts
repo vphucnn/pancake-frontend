@@ -19,6 +19,7 @@ export enum ChainId {
   LINEA_TESTNET = 59140,
   BASE = 8453,
   BASE_TESTNET = 84531,
+  SEPOLIA_TEST = 11155111,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -45,6 +46,7 @@ export const FACTORY_ADDRESS_MAP = {
   [ChainId.BASE]: '0x02a84c1b3bbd7401a5f7fa98a384ebc70bb5749e',
   [ChainId.BASE_TESTNET]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
   [ChainId.SCROLL_SEPOLIA]: '0x2B3C5df29F73dbF028BA82C33e0A5A6e5800F75e',
+  [ChainId.SEPOLIA_TEST]: '0x2B3C5df29F73dbF028BA82C33e0A5A6e5800F75e',
 } as const satisfies Record<ChainId, Address>
 
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -67,6 +69,7 @@ export const INIT_CODE_HASH_MAP = {
   [ChainId.BASE]: INIT_CODE_HASH_ETH,
   [ChainId.BASE_TESTNET]: '0xa5934690703a592a07e841ca29d5e5c79b5e22ed4749057bb216dc31100be1c0',
   [ChainId.SCROLL_SEPOLIA]: INIT_CODE_HASH_ETH,
+  [ChainId.SEPOLIA_TEST]: INIT_CODE_HASH_ETH,
 } as const satisfies Record<ChainId, Hash>
 
 export const WETH9 = {
@@ -198,6 +201,14 @@ export const WETH9 = {
     'Wrapped Ether',
     'https://weth.io'
   ),
+  [ChainId.SEPOLIA_TEST]: new ERC20Token(
+    ChainId.SEPOLIA_TEST,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
 }
 
 export const WBNB = {
@@ -233,6 +244,14 @@ export const WBNB = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
+  [ChainId.SEPOLIA_TEST]: new ERC20Token(
+    ChainId.SEPOLIA_TEST,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
 }
 
 export const WNATIVE = {
@@ -252,6 +271,8 @@ export const WNATIVE = {
   [ChainId.BASE]: WETH9[ChainId.BASE],
   [ChainId.BASE_TESTNET]: WETH9[ChainId.BASE_TESTNET],
   [ChainId.SCROLL_SEPOLIA]: WETH9[ChainId.SCROLL_SEPOLIA],
+  [ChainId.SEPOLIA_TEST]: WETH9[ChainId.SEPOLIA_TEST],
+
 } satisfies Record<ChainId, ERC20Token>
 
 const ETHER = { name: 'Ether', symbol: 'ETH', decimals: 18 } as const
@@ -289,6 +310,7 @@ export const NATIVE = {
   [ChainId.BASE]: ETHER,
   [ChainId.BASE_TESTNET]: ETHER,
   [ChainId.SCROLL_SEPOLIA]: ETHER,
+  [ChainId.SEPOLIA_TEST]: ETHER,
 } satisfies Record<
   ChainId,
   {

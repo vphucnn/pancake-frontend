@@ -23,35 +23,35 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
   [ChainId.ARBITRUM_GOERLI]: DEFAULT,
   [ChainId.POLYGON_ZKEVM]: {
     defaultConfig: {
-      gasLimitPerCall: 500_000,
+      gasLimitPerCall: 500000,
     },
     gasErrorFailureOverride: {
-      gasLimitPerCall: 1_500_000,
+      gasLimitPerCall: 1500000,
     },
     successRateFailureOverrides: {
-      gasLimitPerCall: 1_500_000,
+      gasLimitPerCall: 1500000,
     },
   },
   [ChainId.POLYGON_ZKEVM_TESTNET]: {
     defaultConfig: {
-      gasLimitPerCall: 500_000,
+      gasLimitPerCall: 500000,
     },
     gasErrorFailureOverride: {
-      gasLimitPerCall: 1_500_000,
+      gasLimitPerCall: 1500000,
     },
     successRateFailureOverrides: {
-      gasLimitPerCall: 1_500_000,
+      gasLimitPerCall: 1500000,
     },
   },
   [ChainId.ZKSYNC]: {
     defaultConfig: {
-      gasLimitPerCall: 1_000_000,
+      gasLimitPerCall: 1000000,
     },
     gasErrorFailureOverride: {
-      gasLimitPerCall: 2_000_000,
+      gasLimitPerCall: 2000000,
     },
     successRateFailureOverrides: {
-      gasLimitPerCall: 3_000_000,
+      gasLimitPerCall: 3000000,
     },
   },
   [ChainId.ZKSYNC_TESTNET]: DEFAULT,
@@ -61,4 +61,15 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
   [ChainId.BASE_TESTNET]: DEFAULT,
   [ChainId.OPBNB_TESTNET]: DEFAULT,
   [ChainId.SCROLL_SEPOLIA]: DEFAULT,
+  [ChainId.SEPOLIA_TEST]: {
+    defaultConfig: {
+      gasLimitPerCall: 0
+    },
+    gasErrorFailureOverride: {
+      gasLimitPerCall: 0
+    },
+    successRateFailureOverrides: {
+      gasLimitPerCall: 0
+    }
+  }
 }

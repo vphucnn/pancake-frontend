@@ -25,4 +25,5 @@ export const CHAIN_ID_TO_CHAIN_NAME = {
   [ChainId.SCROLL_SEPOLIA]: '',
   [ChainId.LINEA]: 'linea',
   [ChainId.BASE]: 'base',
+  [ChainId.SEPOLIA_TEST]: '',
 } satisfies Record<ChainId, string>

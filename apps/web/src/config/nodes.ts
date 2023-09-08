@@ -59,6 +59,7 @@ export const SERVER_NODES = {
   [ChainId.BASE]: base.rpcUrls.public.http,
   [ChainId.BASE_TESTNET]: baseGoerli.rpcUrls.public.http,
   [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
+  [ChainId.SEPOLIA_TEST]: scrollSepolia.rpcUrls.public.http,
 } satisfies Record<ChainId, readonly string[]>
 
 export const PUBLIC_NODES = {
@@ -100,4 +101,5 @@ export const PUBLIC_NODES = {
   [ChainId.BASE]: base.rpcUrls.public.http,
   [ChainId.BASE_TESTNET]: baseGoerli.rpcUrls.public.http,
   [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
+  [ChainId.SEPOLIA_TEST]: scrollSepolia.rpcUrls.public.http,
 } satisfies Record<ChainId, readonly string[]>
