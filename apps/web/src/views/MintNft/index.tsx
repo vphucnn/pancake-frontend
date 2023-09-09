@@ -38,14 +38,15 @@ export function MintNFTForm() {
         write?.()
       }}
     >
-      <label htmlFor="tokenId">Token ID</label>
-      <input
-        id="tokenId"
-        onChange={(e) => setTokenId(e.target.value)}
-        placeholder="420"
-        value={tokenId}
-      />
-      <button disabled={!write || isLoading}>
+      <label htmlFor={tokenId}>Token ID
+        <input
+          id={tokenId}
+          onChange={(e) => setTokenId(e.target.value)}
+          placeholder="420"
+          value={tokenId}
+        />
+      </label>
+      <button  type="button" disabled={!write || isLoading}>
         {isLoading ? 'Minting...' : 'Mint'}
       </button>
       {isSuccess && (

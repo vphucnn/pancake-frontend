@@ -21,12 +21,10 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function CoinTools() {
   const [name, setName] = React.useState('Cat in the Hat');
   const [checked, setChecked] = React.useState(true);
-
-  const { address } = useAccount()
-
   const { data, isError, isLoading } = useBalance({
-    address: address,
+    address: useAccount().address,
   })
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
@@ -96,7 +94,7 @@ export default function CoinTools() {
                   variant="outlined"
                 />
               </Grid>
-              <Grid xs={1} md={4}  ></Grid>
+              <Grid xs={1} md={4}  />
               <Grid xs={6} md={4}  >
                 <InputLabel shrink htmlFor="bootstrap-input">
                   Decimals (0-18)
