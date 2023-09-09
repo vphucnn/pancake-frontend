@@ -41,6 +41,14 @@ const config: (
           label: t('Coin Tools'),
           href: '/coin-tools',
         },
+        {
+          label: t('Mint NFT'),
+          href: '/mint-nft',
+        },
+        {
+          label: t('Deploy'),
+          href: '/deploy',
+        },
         // {
         //   label: t('Liquidity'),
         //   href: '/liquidity',
