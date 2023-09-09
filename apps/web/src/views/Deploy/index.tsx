@@ -14,13 +14,12 @@ import {
 } from "./contract.json"
 
 export default function Deploy() {
-    const { chain } = useNetwork()
+    const { chain, chains } = useNetwork()
     const [age, setAge] = useState();
 
     const [holder, setHolder] = useState("");
     const [hash, setHash] = useState<undefined | `0x${string}`>();
-    const [chainId, setChainId] = useState(5);
-    const { data: walletClient } = useWalletClient({ chainId });
+    const { data: walletClient } = useWalletClient();
     const {
         data: deployTx,
         isError,
@@ -28,7 +27,6 @@ export default function Deploy() {
     } = useWaitForTransaction({
         hash,
     });
-
     async function onSubmit() {
         const hash = await walletClient?.deployContract({
             abi: hstAbi,
@@ -46,7 +44,15 @@ export default function Deploy() {
                     color: 'teal',
                 }}>
                 Deploy
-            </Typography>      <FormControl>
+            </Typography>
+
+
+            {chain && <div>Connected to {chain.id}</div>}
+            {chains && (
+                <div>Available chains: {chains.map((chain) => chain.name)}</div>
+            )}
+
+            <FormControl>
                 <Stack spacing={5}>
                     <FormLabel>
                         Holder address (will receive the tokens)
@@ -56,18 +62,7 @@ export default function Deploy() {
                             onChange={(e) => setHolder(e.target.value)}
                         />
                     </FormLabel>
-                    <FormLabel>
-                        Select Network
-                        <Select
-                            defaultValue={5}
-                            value={age}
-                            onChange={(e) => setChainId(parseInt(age))}
-                        >
-                            <MenuItem value={5}>Görli: testnet</MenuItem >
-                            <MenuItem value={666666}>Localhost: testnet</MenuItem >
-                            <MenuItem value={1}>Mainnet: production 💸</MenuItem >
-                        </Select>
-                    </FormLabel>
+
                     <Button
                         onClick={onSubmit}
                     >
