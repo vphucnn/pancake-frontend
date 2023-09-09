@@ -54,11 +54,12 @@ export default function CoinTools() {
           <Grid xs={12} md={6}>
             <h2>Basic setting</h2>
             <Grid sx={{ mt: 2 }}>
-              <InputLabel shrink htmlFor="bootstrap-input">
+              <InputLabel required shrink htmlFor="name">
                 Token name
               </InputLabel>
               <TextField
                 fullWidth
+                id="name"
                 size="small"
                 value={name}
                 variant="outlined"
@@ -94,7 +95,7 @@ export default function CoinTools() {
                   variant="outlined"
                 />
               </Grid>
-              <Grid xs={1} md={4}  />
+              <Grid xs={1} md={4} />
               <Grid xs={6} md={4}  >
                 <InputLabel shrink htmlFor="bootstrap-input">
                   Decimals (0-18)
