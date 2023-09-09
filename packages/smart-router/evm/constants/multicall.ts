@@ -63,13 +63,24 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
   [ChainId.SCROLL_SEPOLIA]: DEFAULT,
   [ChainId.SEPOLIA_TEST]: {
     defaultConfig: {
-      gasLimitPerCall: 0
+      gasLimitPerCall: 0,
     },
     gasErrorFailureOverride: {
-      gasLimitPerCall: 0
+      gasLimitPerCall: 0,
     },
     successRateFailureOverrides: {
-      gasLimitPerCall: 0
-    }
-  }
+      gasLimitPerCall: 0,
+    },
+  },
+  [ChainId.POOLS]: {
+    defaultConfig: {
+      gasLimitPerCall: 0,
+    },
+    gasErrorFailureOverride: {
+      gasLimitPerCall: 0,
+    },
+    successRateFailureOverrides: {
+      gasLimitPerCall: 0,
+    },
+  },
 }

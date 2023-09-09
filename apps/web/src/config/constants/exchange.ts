@@ -46,6 +46,7 @@ export const CHAIN_REFRESH_TIME = {
   [ChainId.BASE_TESTNET]: 6_000,
   [ChainId.SCROLL_SEPOLIA]: 6_000,
   [ChainId.SEPOLIA_TEST]: 6_000,
+  [ChainId.POOLS]: 6_000,
 } as const satisfies Record<ChainId, number>
 
 // used for display in the default list when adding liquidity
@@ -72,6 +73,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BASE_TESTNET]: [baseTestnetTokens.usdc, baseTestnetTokens.weth],
   [ChainId.SCROLL_SEPOLIA]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
   [ChainId.SEPOLIA_TEST]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
+  [ChainId.POOLS]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -93,6 +95,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BASE_TESTNET]: [baseTestnetTokens.usdc, baseTestnetTokens.weth],
   [ChainId.SCROLL_SEPOLIA]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
   [ChainId.SEPOLIA_TEST]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
+  [ChainId.POOLS]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -121,6 +124,7 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.BASE_TESTNET]: [[baseTestnetTokens.usdc, baseTestnetTokens.weth]],
   [ChainId.SCROLL_SEPOLIA]: [[scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth]],
   [ChainId.SEPOLIA_TEST]: [[scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth]],
+  [ChainId.POOLS]: [[scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth]],
 }
 
 export const BIG_INT_ZERO = 0n

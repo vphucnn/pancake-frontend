@@ -1,20 +1,16 @@
 import { languageList, useTranslation } from '@pancakeswap/localization'
-import { footerLinks, Menu as UikitMenu, NextLinkFromReactRouter, useModal } from '@pancakeswap/uikit'
+import { NextLinkFromReactRouter, Menu as UikitMenu, footerLinks, useModal } from '@pancakeswap/uikit'
 import USCitizenConfirmModal from 'components/Modal/USCitizenConfirmModal'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
-import PhishingWarningBanner from 'components/PhishingWarningBanner'
-import { useCakePrice } from 'hooks/useCakePrice'
+import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTheme from 'hooks/useTheme'
+import { IdType } from 'hooks/useUserIsUsCitizenAcknowledgement'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
-import { useActiveChainId } from 'hooks/useActiveChainId'
-import { usePhishingBanner } from '@pancakeswap/utils/user'
-import { IdType } from 'hooks/useUserIsUsCitizenAcknowledgement'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 import GlobalSettings from './GlobalSettings'
 import { SettingsMode } from './GlobalSettings/types'
-import { useMenuItems } from './hooks/useMenuItems'
 import UserMenu from './UserMenu'
+import { useMenuItems } from './hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 
 const LinkComponent = (linkProps) => {
@@ -24,7 +20,6 @@ const LinkComponent = (linkProps) => {
 const Menu = (props) => {
   const { chainId } = useActiveChainId()
   const { isDark, setTheme } = useTheme()
-  const cakePrice = useCakePrice()
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useRouter()
   const [onUSCitizenModalPresent] = useModal(
@@ -33,7 +28,6 @@ const Menu = (props) => {
     false,
     'usCitizenConfirmModal',
   )
-  const [showPhishingWarningBanner] = usePhishingBanner()
 
   const menuItems = useMenuItems(onUSCitizenModalPresent)
 

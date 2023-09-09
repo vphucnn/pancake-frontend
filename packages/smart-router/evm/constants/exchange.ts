@@ -41,6 +41,7 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.BASE_TESTNET]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
   [ChainId.SCROLL_SEPOLIA]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
   [ChainId.SEPOLIA_TEST]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
+  [ChainId.POOLS]: '0x924897DC867F06a1e3c5579bB0B75Df3025D5e9D',
 } as const satisfies Record<ChainId, string>
 
 export const V2_ROUTER_ADDRESS: ChainMap<string> = {
@@ -60,7 +61,8 @@ export const V2_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BASE]: '0x8cFe327CEc66d1C090Dd72bd0FF11d690C33a2Eb',
   [ChainId.BASE_TESTNET]: '0xC259d1D3476558630d83b0b60c105ae958382792',
   [ChainId.SCROLL_SEPOLIA]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
-  [ChainId.SEPOLIA_TEST]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F'
+  [ChainId.SEPOLIA_TEST]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
+  [ChainId.POOLS]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -80,7 +82,8 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BASE]: '',
   [ChainId.BASE_TESTNET]: '',
   [ChainId.SCROLL_SEPOLIA]: '',
-  [ChainId.SEPOLIA_TEST]: ''
+  [ChainId.SEPOLIA_TEST]: '',
+  [ChainId.POOLS]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -109,7 +112,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.BASE]: [baseTokens.usdc, baseTokens.weth],
   [ChainId.BASE_TESTNET]: [baseTestnetTokens.usdc, baseTestnetTokens.weth],
   [ChainId.SCROLL_SEPOLIA]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
-  [ChainId.SEPOLIA_TEST]: []
+  [ChainId.SEPOLIA_TEST]: [],
+  [ChainId.POOLS]: [],
 }
 
 /**

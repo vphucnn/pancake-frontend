@@ -36,6 +36,7 @@ export const usdGasTokensByChain = {
   [ChainId.BASE_TESTNET]: [baseTestnetTokens.usdc],
   [ChainId.SCROLL_SEPOLIA]: [scrollSepoliaTokens.usdc],
   [ChainId.SEPOLIA_TEST]: [scrollSepoliaTokens.usdc],
+  [ChainId.POOLS]: [scrollSepoliaTokens.usdc],
 } satisfies Record<ChainId, Token[]>
 
 export * from './v2'
