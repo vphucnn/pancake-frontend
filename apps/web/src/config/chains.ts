@@ -154,10 +154,10 @@ export const sepoliaETHTestnet = {
   nativeCurrency: { name: 'SepoliaETH', symbol: 'SepoliaETH', decimals: 18 },
   rpcUrls: {
     default: {
-      http: ['https://sepolia.infura.io/v3/'],
+      http: ['https://rpc.sepolia.org'],
     },
     public: {
-      http: ['https://sepolia.infura.io/v3/'],
+      http: ['https://rpc.sepolia.org'],
     },
   },
   blockExplorers: {
