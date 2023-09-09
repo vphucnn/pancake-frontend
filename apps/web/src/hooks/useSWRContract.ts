@@ -38,8 +38,10 @@ export const fetchStatusMiddleware: Middleware = (useSWRNext) => {
         } else if (swr.error && isDataUndefined) {
           status = FetchStatus.Failed
         }
+        
         return status
       },
+      configurable: true
     })
   }
 }

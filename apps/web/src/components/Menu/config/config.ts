@@ -30,13 +30,13 @@ const config: (
       label: t('Trade'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
-      href: '/swap',
+      href: '/coin-tools',
       showItemsOnMobile: false,
       items: [
-        {
-          label: t('Swap'),
-          href: '/swap',
-        },
+        // {
+        //   label: t('Swap'),
+        //   href: '/swap',
+        // },
         {
           label: t('Coin Tools'),
           href: '/coin-tools',
