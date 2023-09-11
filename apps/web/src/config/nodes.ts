@@ -11,7 +11,7 @@ import {
   base,
 } from 'wagmi/chains'
 import { getNodeRealUrlV2 } from 'utils/nodeReal'
-import { opbnbTestnet, linea, sepoliaETHTestnet, pools } from './chains'
+import { opbnbTestnet, linea, sepoliaETHTestnet, pools, poolsTest } from './chains'
 
 const POLYGON_ZKEVM_NODES = [
   'https://f2562de09abc5efbd21eefa083ff5326.zkevm-rpc.com/',
@@ -61,6 +61,7 @@ export const SERVER_NODES = {
   [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
   [ChainId.SEPOLIA_TEST]: sepoliaETHTestnet.rpcUrls.public.http,
   [ChainId.POOLS]: pools.rpcUrls.public.http,
+  [ChainId.POOLS_TEST]: poolsTest.rpcUrls.public.http,
 } satisfies Record<ChainId, readonly string[]>
 
 export const PUBLIC_NODES = {
@@ -104,4 +105,5 @@ export const PUBLIC_NODES = {
   [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
   [ChainId.SEPOLIA_TEST]: sepoliaETHTestnet.rpcUrls.public.http,
   [ChainId.POOLS]: pools.rpcUrls.public.http,
+  [ChainId.POOLS_TEST]: poolsTest.rpcUrls.public.http,
 } satisfies Record<ChainId, readonly string[]>

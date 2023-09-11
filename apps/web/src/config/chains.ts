@@ -37,6 +37,7 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.SCROLL_SEPOLIA]: 'scrollSepolia',
   [ChainId.SEPOLIA_TEST]: 'testSepolia',
   [ChainId.POOLS]: 'pools',
+  [ChainId.POOLS_TEST]: 'tPOOLS',
 } as const satisfies Record<ChainId, string>
 
 const CHAIN_QUERY_NAME_TO_ID = Object.entries(CHAIN_QUERY_NAME).reduce((acc, [chainId, chainName]) => {
@@ -202,6 +203,34 @@ export const pools = {
   testnet: true,
 } as const satisfies Chain
 
+export const poolsTest = {
+  id: 12345,
+  name: 'Pools Testnet',
+  network: 'pools-testnet',
+  nativeCurrency: { name: 'Pools', symbol: 'POOLS', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc-testnet.poolsmobility.com'],
+    },
+    public: {
+      http: ['https://rpc-testnet.poolsmobility.com'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'tPools',
+      url: 'https://scan-testnet.poolsmobility.com',
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      blockCreated: 3705108,
+    },
+  },
+  testnet: true,
+} as const satisfies Chain
+
 /**
  * Controls some L2 specific behavior, e.g. slippage tolerance, special UI behavior.
  * The expectation is that all of these networks have immediate transaction confirmation.
@@ -242,4 +271,5 @@ export const CHAINS = [
   // scrollSepolia,
   sepoliaETHTestnet,
   pools,
+  poolsTest
 ]

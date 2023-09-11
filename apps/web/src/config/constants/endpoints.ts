@@ -88,6 +88,7 @@ export const V3_SUBGRAPH_URLS = {
   [ChainId.SCROLL_SEPOLIA]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
   [ChainId.SEPOLIA_TEST]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
   [ChainId.POOLS]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
+  [ChainId.POOLS_TEST]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
 } satisfies Record<ChainId, string | null>
 
 export const TRADING_REWARD_API = 'https://pancake-trading-fee-rebate-api.pancakeswap.com/api/v1'

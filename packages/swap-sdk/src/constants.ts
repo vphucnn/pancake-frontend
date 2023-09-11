@@ -21,6 +21,7 @@ export enum ChainId {
   BASE_TESTNET = 84531,
   SEPOLIA_TEST = 11155111,
   POOLS = 6868,
+  POOLS_TEST = 12345,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -49,6 +50,7 @@ export const FACTORY_ADDRESS_MAP = {
   [ChainId.SCROLL_SEPOLIA]: '0x2B3C5df29F73dbF028BA82C33e0A5A6e5800F75e',
   [ChainId.SEPOLIA_TEST]: '0x2B3C5df29F73dbF028BA82C33e0A5A6e5800F75e',
   [ChainId.POOLS]: '0x924897DC867F06a1e3c5579bB0B75Df3025D5e9D',
+  [ChainId.POOLS_TEST]: '0x924897DC867F06a1e3c5579bB0B75Df3025D5e9D',
 } as const satisfies Record<ChainId, Address>
 
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -73,6 +75,7 @@ export const INIT_CODE_HASH_MAP = {
   [ChainId.SCROLL_SEPOLIA]: INIT_CODE_HASH_ETH,
   [ChainId.SEPOLIA_TEST]: INIT_CODE_HASH_ETH,
   [ChainId.POOLS]: INIT_CODE_HASH_ETH,
+  [ChainId.POOLS_TEST]: INIT_CODE_HASH_ETH,
 } as const satisfies Record<ChainId, Hash>
 
 export const WETH9 = {
@@ -220,6 +223,14 @@ export const WETH9 = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
+  [ChainId.POOLS_TEST]: new ERC20Token(
+    ChainId.POOLS_TEST,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
 }
 
 export const WBNB = {
@@ -271,6 +282,14 @@ export const WBNB = {
     'Wrapped BNB',
     'https://www.binance.org'
   ),
+  [ChainId.POOLS_TEST]: new ERC20Token(
+    ChainId.POOLS_TEST,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB',
+    'https://www.binance.org'
+  ),
 }
 
 export const WNATIVE = {
@@ -292,6 +311,7 @@ export const WNATIVE = {
   [ChainId.SCROLL_SEPOLIA]: WETH9[ChainId.SCROLL_SEPOLIA],
   [ChainId.SEPOLIA_TEST]: WETH9[ChainId.SEPOLIA_TEST],
   [ChainId.POOLS]: WETH9[ChainId.POOLS],
+  [ChainId.POOLS_TEST]: WETH9[ChainId.POOLS_TEST],
 } satisfies Record<ChainId, ERC20Token>
 
 const ETHER = { name: 'Ether', symbol: 'ETH', decimals: 18 } as const
@@ -331,6 +351,7 @@ export const NATIVE = {
   [ChainId.SCROLL_SEPOLIA]: ETHER,
   [ChainId.SEPOLIA_TEST]: ETHER,
   [ChainId.POOLS]: ETHER,
+  [ChainId.POOLS_TEST]: ETHER,
 } satisfies Record<
   ChainId,
   {

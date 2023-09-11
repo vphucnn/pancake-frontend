@@ -83,4 +83,5 @@ export const BATCH_MULTICALL_CONFIGS: ChainMap<BatchMulticallConfigs> = {
       gasLimitPerCall: 0,
     },
   },
+  [ChainId.POOLS_TEST]: DEFAULT,
 }

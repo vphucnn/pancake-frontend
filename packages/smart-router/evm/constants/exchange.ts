@@ -42,6 +42,7 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.SCROLL_SEPOLIA]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
   [ChainId.SEPOLIA_TEST]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
   [ChainId.POOLS]: '0x924897DC867F06a1e3c5579bB0B75Df3025D5e9D',
+  [ChainId.POOLS_TEST]: '0x924897DC867F06a1e3c5579bB0B75Df3025D5e9D',
 } as const satisfies Record<ChainId, string>
 
 export const V2_ROUTER_ADDRESS: ChainMap<string> = {
@@ -63,6 +64,7 @@ export const V2_ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.SCROLL_SEPOLIA]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
   [ChainId.SEPOLIA_TEST]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
   [ChainId.POOLS]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
+  [ChainId.POOLS_TEST]: '0x715303D2eF7dA7FFAbF637651D71FD11d41fAf7F',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -84,6 +86,7 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.SCROLL_SEPOLIA]: '',
   [ChainId.SEPOLIA_TEST]: '',
   [ChainId.POOLS]: '',
+  [ChainId.POOLS_TEST]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -114,6 +117,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.SCROLL_SEPOLIA]: [scrollSepoliaTokens.usdc, scrollSepoliaTokens.weth],
   [ChainId.SEPOLIA_TEST]: [],
   [ChainId.POOLS]: [],
+  [ChainId.POOLS_TEST]: [],
 }
 
 /**
