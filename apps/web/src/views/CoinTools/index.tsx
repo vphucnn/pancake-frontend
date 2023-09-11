@@ -33,24 +33,32 @@ export default function CoinTools() {
   if (isLoading) return <div>Fetching balance…</div>
   if (isError) return <div>Error fetching balance</div>
   return (
-    <Paper >
-      <Box sx={{ flexGrow: 1, p: 2, minHeight: '100vh' }}
+    <Grid
+      container
+      direction="column"
+    >
+
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        sx={{ pt: 5 }}
       >
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Typography variant="h5"
-            component="h2" sx={{
-              color: 'teal',
-            }}>
-            Balance: {data?.formatted} {data?.symbol}
-          </Typography>
-        </Grid>
-        <Grid sx={{ p: 5 }} container spacing={10}>
+        <Typography variant="h5"
+          component="h2" sx={{
+            color: 'teal',
+          }}>
+          Balance: {data?.formatted} {data?.symbol}
+        </Typography>
+      </Grid>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        sx={{ pt: 5 }}
+
+      >
+        <Grid container sx={{ p: 2 }} maxWidth={"1200px"} width={"1200px"}>
           <Grid xs={12} md={6}>
             <h2>Basic setting</h2>
             <Grid sx={{ mt: 2 }}>
@@ -111,7 +119,7 @@ export default function CoinTools() {
 
             </Grid>
           </Grid>
-          <Grid xs={12} md={5}>
+          <Grid xs={12} md={6}>
             <h2>Token configuration</h2>
 
             <Grid sx={{ mt: 2 }}>
@@ -157,16 +165,17 @@ export default function CoinTools() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Button variant="contained">Create</Button>
-        </Grid>
-      </Box>
-    </Paper>
+      </Grid>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ pt: 5 }}
+
+      >
+        <Button variant="contained">Create</Button>
+      </Grid>
+    </Grid>
   )
 }

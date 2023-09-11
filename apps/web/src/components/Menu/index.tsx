@@ -62,7 +62,7 @@ const Menu = (props) => {
         setLang={setLanguage}
         // cakePriceUsd={cakePrice.eq(BIG_ZERO) ? undefined : cakePrice}
         links={menuItems}
-        subLinks={activeMenuItem?.hideSubNav || activeSubMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
+        // subLinks={activeMenuItem?.hideSubNav || activeSubMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
         footerLinks={getFooterLinks}
         // activeItem={activeMenuItem?.href}
         // activeSubItem={activeSubMenuItem?.href}

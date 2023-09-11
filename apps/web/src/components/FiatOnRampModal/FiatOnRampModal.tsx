@@ -49,7 +49,7 @@ const IFrameWrapper = styled(Flex)`
   left: 50%;
   top: 55%;
   transform: translate(-50%, -50%);
-  background: ${({ theme }) => (theme.isDark ? '#27262C' : 'white')};
+  background: ${({ theme }) => (theme.isDark ? '#00001' : 'white')};
   position: absolute;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
