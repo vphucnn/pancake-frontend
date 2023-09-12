@@ -58,7 +58,7 @@ export default function CoinTools() {
         sx={{ pt: 5 }}
 
       >
-        <Grid container sx={{ p: 2 }} maxWidth={"1200px"} width={"1200px"}>
+        <Grid container sx={{ p: 2 }} maxWidth={"1800px"} width={"1800px"}>
           <Grid xs={12} md={6}>
             <h2>Basic setting</h2>
             <Grid sx={{ mt: 2 }}>

@@ -2109,7 +2109,7 @@ exports[`renders correctly 1`] = `
 
 @media screen and (min-width: 576px) {
   .c3 {
-    width: 1200px;
+    width: 1800px;
   }
 }
 

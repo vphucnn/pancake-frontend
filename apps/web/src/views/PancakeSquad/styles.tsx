@@ -7,7 +7,7 @@ export const StyledSquadContainer = styled(Box)`
 `
 
 export const LandingBodyWrapper = styled(Flex)`
-  max-width: 1200px;
+  max-width: 1800px;
   width: 100%;
   margin: 0 16px;
 

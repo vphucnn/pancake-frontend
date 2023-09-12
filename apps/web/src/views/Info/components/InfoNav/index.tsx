@@ -76,7 +76,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
         </Box>
       </NavWrapper>
       {chainId === ChainId.BSC && !isStableSwap && (
-        <Box maxWidth="1200px" m="0 auto">
+        <Box maxWidth="1800px" m="0 auto">
           <Message my="24px" mx="24px" variant="warning">
             <MessageText fontSize="17px">
               <Text color="warning" as="span">
