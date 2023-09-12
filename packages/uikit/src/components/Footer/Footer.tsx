@@ -34,8 +34,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
     if(!isDark)toggleTheme(true)
   }, []);
   return (
-    <StyledFooter
-      data-theme="dark"
+    <StyledFooter 
       p={["40px 16px", null, "56px 40px 32px 40px"]}
       position="relative"
       {...props}

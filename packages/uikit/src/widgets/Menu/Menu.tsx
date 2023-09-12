@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
 `;
+//pi
 
 const StyledNav = styled.nav`
   display: flex;
@@ -30,10 +31,7 @@ const StyledNav = styled.nav`
   align-items: center;
   width: 100%;
   height: ${MENU_HEIGHT}px;
-  background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
   transform: translate3d(0, 0, 0);
-
   padding-left: 16px;
   padding-right: 16px;
 `;
@@ -132,6 +130,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const subLinksWithoutMobile = useMemo(() => subLinks?.filter((subLink) => !subLink.isMobileOnly), [subLinks]);
   const subLinksMobileOnly = useMemo(() => subLinks?.filter((subLink) => subLink.isMobileOnly), [subLinks]);
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
+  // pi
   return (
     <MenuContext.Provider value={providerValue}>
       <AtomBox

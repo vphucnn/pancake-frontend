@@ -85,6 +85,16 @@ const config: (
         // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
+    {
+      label: t('deploy'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: '/deploy',
+      showItemsOnMobile: false,
+      items: [
+  
+      ].map((item) => addMenuItemSupported(item, chainId)),
+    },
     // {
     //   label: t('Earn'),
     //   href: '/farms',
