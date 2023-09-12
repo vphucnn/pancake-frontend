@@ -38,15 +38,19 @@ const config: (
         //   href: '/swap',
         // },
         {
-          label: t('Coin Tools'),
+          label: t('Contract generator'),
           href: '/coin-tools',
         },
         {
-          label: t('Mint NFT'),
+          label: t('Create NFT contract'),
           href: '/mint-nft',
         },
         {
-          label: t('Deploy'),
+          label: t('Aidrop'),
+          href: '/deploy',
+        },
+        {
+          label: t('Staking'),
           href: '/deploy',
         },
         // {

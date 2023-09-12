@@ -36,6 +36,7 @@
     "@emotion/styled": "^11.11.0",
     "@gelatonetwork/limit-orders-lib": "^4.1.0",
     "@gnosis.pm/safe-apps-wagmi": "^1.2.0",
+    "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
     "@next/bundle-analyzer": "13.0.7",
     "@nextui-org/react": "^2.1.12",

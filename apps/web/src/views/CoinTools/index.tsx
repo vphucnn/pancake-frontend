@@ -1,14 +1,23 @@
+import ContentCut from '@mui/icons-material/ContentCut'
+import { Button, MenuItem, MenuList } from '@mui/material'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2'
 import { styled } from '@mui/material/styles'
+import { useTranslation } from '@pancakeswap/localization'
+import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useAccount, useBalance } from 'wagmi'
+import { useModal } from '../../../../../packages/uikit/src'
+import { useMenuItems } from '../../components/Menu/hooks/useMenuItems'
+import { getActiveMenuItem, getActiveSubMenuItem } from '../../components/Menu/utils'
+import USCitizenConfirmModal from '../../components/Modal/USCitizenConfirmModal'
+import { IdType } from '../../hooks/useUserIsUsCitizenAcknowledgement'
+import CTButtom from '../Component/CTButtom'
 import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
-import CTButtom from '../Component/CTButtom'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -19,6 +28,18 @@ const Item = styled(Paper)(({ theme }) => ({
 }))
 
 export default function CoinTools() {
+  const { currentLanguage, setLanguage, t } = useTranslation()
+  const [onUSCitizenModalPresent] = useModal(
+    <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} />,
+    false,
+    false,
+    'usCitizenConfirmModal',
+  )
+  const { pathname } = useRouter()
+  const menuItems = useMenuItems(onUSCitizenModalPresent)
+  const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
+  const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
+
   const [name, setName] = React.useState('')
   const [checked, setChecked] = React.useState(true)
   const { data, isError, isLoading } = useBalance({
@@ -34,13 +55,13 @@ export default function CoinTools() {
     setChecked(event.target.checked)
   }
 
-
-
   if (isLoading) return <div>Fetching balance…</div>
   if (isError) return <div>Error fetching balance</div>
+  console.log(333)
+  console.log(activeSubMenuItem)
   return (
     <>
-      <Typography
+      {/* <Typography
         variant="h5"
         component="h2"
         sx={{
@@ -48,10 +69,39 @@ export default function CoinTools() {
         }}
       >
         Balance: {data?.formatted} {data?.symbol} {name}
-      </Typography>
+      </Typography> */}
       <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
         <Grid width={'1800px'} spacing={2} container maxWidth={'1800px'}>
-          <Grid xs={2} md={2} sx={{ minHeight: '100%', background: '#131313' }}></Grid>
+          <Grid xs={2} md={2} sx={{ minHeight: '100%', background: '#131313' }}>
+            <MenuList>
+              {menuItems[0].items.map((item) => (
+                <MenuItem>
+                  {item.href == activeSubMenuItem.href ? (
+                    <CTButtom
+                      sx={{
+                        width: '300px',
+                      }}
+                      variant="contained"
+                    >
+                      <ContentCut color="success" fontSize="small" /> Create Token
+                    </CTButtom>
+                  ) : (
+                    <Button
+                      sx={{
+                        width: '300px',
+                        color: '#A2A3A4'
+                      }}
+                      variant="text"
+                    >
+                      <ContentCut color="success" fontSize="small" /> Create Token
+                    </Button>
+                  )}
+
+                  {/* <Box sx={{ display: 'inline', ml: 3 }} >{item.label}</Box> */}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Grid>
           <Grid xs={10} md={10}>
             <Typography
               variant="h5"
@@ -245,8 +295,10 @@ export default function CoinTools() {
               </Grid>
               <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
                 <CTButtom
+                  className={'show'}
                   sx={{
                     width: '300px',
+                    borderRadius: 2,
                   }}
                   variant="contained"
                 >
@@ -255,7 +307,6 @@ export default function CoinTools() {
               </Grid>
             </Grid>
           </Grid>
-          <Item>xs=4</Item>
         </Grid>
       </Box>
     </>
