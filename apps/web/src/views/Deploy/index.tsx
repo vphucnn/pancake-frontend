@@ -18,6 +18,11 @@ import {
     Abi as myTokenAbi,
 } from "./my-token.json"
 
+import {
+    Bytecode as helloWorldBytecode,
+    Abi as helloWorldTokenAbi,
+} from "./hello-world.json"
+
 export default function Deploy() {
     const { chain, chains } = useNetwork()
     const [age, setAge] = useState();
@@ -34,9 +39,9 @@ export default function Deploy() {
     });
     async function onSubmit() {
         const hash = await walletClient?.deployContract({
-            abi: myTokenAbi,
-            bytecode: myTokenBytecode as `0x${string}`,
-            args: ["Pu", "Pu", 1000000000000000],
+            abi: helloWorldTokenAbi,
+            bytecode: helloWorldBytecode as `0x${string}`,
+            args: [],
             chain: chain
         });
         setHash(hash);
