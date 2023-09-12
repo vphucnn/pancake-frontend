@@ -1,5 +1,5 @@
 import { useIsMounted } from "@pancakeswap/hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Flex } from "../Box";
 import { Link } from "../Link";
 import {
@@ -13,11 +13,7 @@ import {
 } from "./styles";
 
 import { vars } from "../../css/vars.css";
-import { Button } from "../Button";
-import CakePrice from "../CakePrice/CakePrice";
-import LangSelector from "../LangSelector/LangSelector";
-import { ArrowForwardIcon, LogoWithTextIcon } from "../Svg";
-import { ThemeSwitcher } from "../ThemeSwitcher";
+import { LogoWithTextIcon } from "../Svg";
 import { FooterProps } from "./types";
 
 const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
@@ -34,6 +30,9 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   ...props
 }) => {
   const isMounted = useIsMounted();
+  useEffect(() => {
+    if(!isDark)toggleTheme(true)
+  }, []);
   return (
     <StyledFooter
       data-theme="dark"
@@ -87,7 +86,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           flexDirection={["column", null, "row"]}
           justifyContent="space-between"
         >
-          <Flex order={[2, null, 1]} alignItems="center">
+          {/* <Flex order={[2, null, 1]} alignItems="center">
             {isMounted && <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} />}
             <LangSelector
               currentLang={currentLang}
@@ -96,7 +95,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
               color="textSubtle"
               dropdownPosition="top-right"
             />
-          </Flex>
+          </Flex> */}
           {/* <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
             <Box mr="20px">
               <CakePrice chainId={chainId} cakePriceUsd={cakePriceUsd} color="textSubtle" />
