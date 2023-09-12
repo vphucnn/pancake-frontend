@@ -1,14 +1,14 @@
+import Box from '@mui/material/Box'
+import InputLabel from '@mui/material/InputLabel'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Unstable_Grid2'
+import { styled } from '@mui/material/styles'
+import * as React from 'react'
 import { useAccount, useBalance } from 'wagmi'
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import Typography from '@mui/material/Typography';
-import Switch from '@mui/material/Switch';
-import Button from '@mui/material/Button';
+import CTTextField from '../Component/CTextField'
+import IOSSwitch from '../Component/IOSSwithc'
+import CTButtom from '../Component/CTButtom'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,166 +16,248 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-}));
+}))
 
 export default function CoinTools() {
-  const [name, setName] = React.useState('Cat in the Hat');
-  const [checked, setChecked] = React.useState(true);
+  const [name, setName] = React.useState('')
+  const [checked, setChecked] = React.useState(true)
   const { data, isError, isLoading } = useBalance({
     address: useAccount().address,
   })
 
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
+    setName(event.target.value)
+  }
+
+  const handleSwitchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event)
+    setChecked(event.target.checked)
+  }
+
+
 
   if (isLoading) return <div>Fetching balance…</div>
   if (isError) return <div>Error fetching balance</div>
   return (
-    <Grid
-      container
-      direction="column"
-    >
-
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        sx={{ pt: 5 }}
+    <>
+      <Typography
+        variant="h5"
+        component="h2"
+        sx={{
+          color: 'teal',
+        }}
       >
-        <Typography variant="h5"
-          component="h2" sx={{
-            color: 'teal',
-          }}>
-          Balance: {data?.formatted} {data?.symbol}
-        </Typography>
-      </Grid>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        sx={{ pt: 5 }}
+        Balance: {data?.formatted} {data?.symbol} {name}
+      </Typography>
+      <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
+        <Grid width={'1800px'} spacing={2} container maxWidth={'1800px'}>
+          <Grid xs={2} md={2} sx={{ minHeight: '100%', background: '#131313' }}></Grid>
+          <Grid xs={10} md={10}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                color: 'white',
+                p: 2,
+              }}
+            >
+              Contract generator
+            </Typography>
 
-      >
-        <Grid container sx={{ p: 2 }} maxWidth={"1800px"} width={"1800px"}>
-          <Grid xs={12} md={6}>
-            <h2>Basic setting</h2>
-            <Grid sx={{ mt: 2 }}>
-              <InputLabel required shrink htmlFor="name">
-                Token name
-              </InputLabel>
-              <TextField
-                fullWidth
-                id="name"
-                size="small"
-                value={name}
-                variant="outlined"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setName(event.target.value);
+            <Grid sx={{ p: 2 }}>
+              <Typography
+                variant="h6"
+                component="h6"
+                sx={{
+                  color: '#D1D1D1',
                 }}
-              />
-            </Grid>
-            <Grid sx={{ mt: 2 }}>
-              <InputLabel shrink htmlFor="bootstrap-input">
-                Token name
-              </InputLabel>
-              <TextField
-                fullWidth
-                size="small"
-                value={name}
-                variant="outlined"
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                  setName(event.target.value);
-                }}
-              />
-            </Grid>
-            <Grid sx={{ mt: 2 }} columns={16} container spacing={2}>
-              <Grid xs={9} md={8} >
-                <InputLabel shrink htmlFor="bootstrap-input">
+              >
+                Basic setting
+              </Typography>
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  shrink
+                  htmlFor="name"
+                >
+                  Token Name
+                </InputLabel>
+                <CTTextField
+                  fullWidth
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
+                />
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  shrink
+                  htmlFor="name"
+                >
+                  Symbol
+                </InputLabel>
+                <CTTextField
+                  fullWidth
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
+                />
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  required
+                  shrink
+                  htmlFor="name"
+                >
                   Initial supply
                 </InputLabel>
-                <TextField
-                  size="small"
+                <CTTextField
                   fullWidth
-                  id="standard-read-only-input"
-                  defaultValue="Hello World"
-                  variant="outlined"
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
                 />
               </Grid>
-              <Grid xs={1} md={4} />
-              <Grid xs={6} md={4}  >
-                <InputLabel shrink htmlFor="bootstrap-input">
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  required
+                  shrink
+                  htmlFor="name"
+                >
                   Decimals (0-18)
                 </InputLabel>
-                <TextField
-                  size="small"
+                <CTTextField
                   fullWidth
-                  id="standard-read-only-input"
-                  defaultValue="Hello World"
-                  variant="outlined"
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
                 />
               </Grid>
+              <Typography
+                variant="h6"
+                component="h6"
+                sx={{
+                  color: '#D1D1D1',
+                }}
+              >
+                Token configuration
+              </Typography>
+              <Grid sx={{ mt: 3 }}>
+                <IOSSwitch
+                  checked={checked}
+                  onChange={handleSwitchChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Box sx={{ display: 'inline', ml: 3 }}>Can Burn</Box>
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <IOSSwitch
+                  checked={checked}
+                  onChange={handleSwitchChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Box sx={{ display: 'inline', ml: 3 }}>Can Mint</Box>
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <IOSSwitch
+                  checked={checked}
+                  onChange={handleSwitchChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Box sx={{ display: 'inline', ml: 3 }}>Can Pause</Box>
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <IOSSwitch
+                  checked={checked}
+                  onChange={handleSwitchChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Box sx={{ display: 'inline', ml: 3 }}>Can Blacklist</Box>
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <IOSSwitch
+                  checked={checked}
+                  onChange={handleSwitchChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                />
+                <Box sx={{ display: 'inline', ml: 3 }}>Apply Burn Fee (Deflationary token )</Box>
+              </Grid>
 
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  required
+                  shrink
+                  htmlFor="name"
+                >
+                  Decimals (0-18)
+                </InputLabel>
+                <CTTextField
+                  fullWidth
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
+                />
+                <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
+                  Can be updated after initial token creation.
+                </Box>
+              </Grid>
+              <Grid sx={{ mt: 3 }}>
+                <InputLabel
+                  sx={{
+                    color: '#D1D1D1',
+                  }}
+                  required
+                  shrink
+                  htmlFor="name"
+                >
+                  Decimals (0-18)
+                </InputLabel>
+                <CTTextField
+                  fullWidth
+                  id="name"
+                  InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                  value={name}
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event)}
+                />
+                <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
+                  Specify the tax / fee in basis points (bps), i.e. 1% is equal to 100 bps. Example: to charge a tax /
+                  fee of 3.5%, enter the number 350. Can be updated after initial token creation.
+                </Box>
+              </Grid>
+              <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
+                <CTButtom
+                  sx={{
+                    width: '300px',
+                  }}
+                  variant="contained"
+                >
+                  Create Token
+                </CTButtom>
+              </Grid>
             </Grid>
           </Grid>
-          <Grid xs={12} md={6}>
-            <h2>Token configuration</h2>
-
-            <Grid sx={{ mt: 2 }}>
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <span>Can Burn</span>
-            </Grid>
-            <Grid sx={{ mt: 2 }}>
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <span>Can Mint</span>
-            </Grid>
-            <Grid sx={{ mt: 2 }}>
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <span>Can Pause</span>
-            </Grid>
-            <Grid sx={{ mt: 2 }}>
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <span>Can Blacklist</span>
-            </Grid>
-            <Grid sx={{ mt: 2 }}>
-              <Switch
-                checked={checked}
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-              />
-              <span>Apply Burn Fee (Deflationary token
-                )</span>
-            </Grid>
-          </Grid>
+          <Item>xs=4</Item>
         </Grid>
-      </Grid>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        sx={{ pt: 5 }}
-
-      >
-        <Button variant="contained">Create</Button>
-      </Grid>
-    </Grid>
+      </Box>
+    </>
   )
 }
