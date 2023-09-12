@@ -38,13 +38,13 @@ export default function Deploy() {
         hash,
     });
     async function onSubmit() {
-        const hash = await walletClient?.deployContract({
+        const data = await walletClient?.deployContract({
             abi: helloWorldTokenAbi,
             bytecode: helloWorldBytecode as `0x${string}`,
             args: [],
-            chain: chain
+            chain
         });
-        setHash(hash);
+        setHash(data);
     }
 
     return (
@@ -59,7 +59,7 @@ export default function Deploy() {
 
             {chain && <div>Connected to {chain.id}</div>}
             {chains && (
-                <div>Available chains: {chains.map((chain) => chain.name)}</div>
+                <div>Available chains: {chains.map((c) => c.name)}</div>
             )}
 
             <FormControl>

@@ -58,7 +58,7 @@ const bounceOutKeyframe = keyframes`
 
   to {
     opacity: 0;
-    transform: translate3d(0, 2000px, 0) scaleY(3);
+    transform: translate3d(0, 1200px, 0) scaleY(3);
   }
 `
 
@@ -92,7 +92,7 @@ const Wrapper = styled.div`
   }
 
   &.popup-exit-done {
-    bottom: -2000px;
+    bottom: -1200px;
   }
 
   &.popup-exit-active {

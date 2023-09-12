@@ -271,7 +271,7 @@ export const FineTuning: React.FC<React.PropsWithChildren> = () => {
 export const Flipping: React.FC<React.PropsWithChildren> = () => {
   const { targetRef, tooltip } = useTooltip("All tooltips flip automatically when you scroll", { placement: "top" });
   return (
-    <div style={{ padding: "200px", width: "500px", height: "2000px" }}>
+    <div style={{ padding: "200px", width: "500px", height: "1200px" }}>
       <ReferenceElement ref={targetRef} />
       {tooltip}
     </div>
