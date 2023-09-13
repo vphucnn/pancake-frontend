@@ -17,8 +17,13 @@ import { IdType } from '../../hooks/useUserIsUsCitizenAcknowledgement'
 import CTButtom from '../Component/CTButtom'
 import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
+import InputSpinner from 'react-bootstrap-input-spinner'
 
 import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
+import { Button, Radio } from '@mui/material'
+import CTRadio from '../Component/CTRadio'
+import CTIncrementButton from '../Component/CTIncrementButton '
+import CTDecrementButton from '../Component/CTDecrementButton '
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -80,6 +85,13 @@ export default function Airdrop() {
     f(value)
   }
 
+  //ratio
+  const [selectedValue, setSelectedValue] = React.useState('a')
+
+  const handleChangeRatio = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value)
+  }
+
   return (
     <CoinToolLayout>
       <Typography
@@ -91,10 +103,10 @@ export default function Airdrop() {
           pt: 2,
         }}
       >
-        Contract generator {canBurn.toString()}
+        Airdrop {canBurn.toString()}
       </Typography>
 
-      <Grid sx={{ pl: 5, pt: 2 }}>
+      <Box sx={{ pl: 5, pt: 2 }}>
         <Typography
           variant="h6"
           component="h6"
@@ -102,17 +114,18 @@ export default function Airdrop() {
             color: '#D1D1D1',
           }}
         >
-          Basic setting
+          Create Airdrop
         </Typography>
         <Grid sx={{ mt: 3 }}>
           <InputLabel
             sx={{
               color: '#D1D1D1',
             }}
+            required
             shrink
             htmlFor="name"
           >
-            Token Name
+            Token Address
           </InputLabel>
           <CTTextField
             size="small"
@@ -123,6 +136,40 @@ export default function Airdrop() {
             onChange={(event) => handleChange(event.target.value, setName)}
           />
         </Grid>
+        <Grid container spacing={2} sx={{ mt: 3 }}>
+          <Grid xs={6} md={6} sx={{}}>
+            <Box sx={{ display: 'block', width: '100%', border: 1, borderRadius: 3, borderColor: '#E8CC93' }}>
+              <CTRadio
+                sx={{
+                  color: '#9E9E9E',
+                }}
+                checked={selectedValue === 'a'}
+                onChange={handleChangeRatio}
+                value="a"
+                name="radio-buttons"
+                size="small"
+                inputProps={{ 'aria-label': 'A' }}
+              />
+              <Box sx={{ display: 'inline' }}>Designated Wallet</Box>
+            </Box>
+          </Grid>
+          <Grid xs={6} md={6} sx={{}}>
+            <Box sx={{ display: 'block', width: '100%', border: 1, borderRadius: 3, borderColor: '#9E9E9E' }}>
+              <CTRadio
+                sx={{
+                  color: '#9E9E9E',
+                }}
+                checked={selectedValue === 'b'}
+                onChange={handleChangeRatio}
+                value="b"
+                name="radio-buttons"
+                inputProps={{ 'aria-label': 'B' }}
+                size="small"
+              />
+              <Box sx={{ display: 'inline' }}>Any Wallet</Box>
+            </Box>
+          </Grid>
+        </Grid>
         <Grid sx={{ mt: 3 }}>
           <InputLabel
             sx={{
@@ -131,7 +178,7 @@ export default function Airdrop() {
             shrink
             htmlFor="name"
           >
-            Symbol
+            Airdrop Amount
           </InputLabel>
           <CTTextField
             size="small"
@@ -142,6 +189,96 @@ export default function Airdrop() {
             onChange={(event) => handleChange(event.target.value, setSymbol)}
           />
         </Grid>
+
+        <Grid container spacing={2} sx={{ mt: 3 }}>
+          <Grid xs={4} md={4} sx={{}}>
+            <Box sx={{ display: 'block', width: '100%', border: 1, borderRadius: 3, borderColor: '#E8CC93' }}>
+              <CTRadio
+                sx={{
+                  color: '#9E9E9E',
+                }}
+                checked={selectedValue === 'a'}
+                onChange={handleChangeRatio}
+                value="a"
+                name="radio-buttons"
+                size="small"
+                inputProps={{ 'aria-label': 'A' }}
+              />
+              <Box sx={{ display: 'inline' }}>Random</Box>
+            </Box>
+          </Grid>
+          <Grid xs={4} md={4} sx={{}}>
+            <Box sx={{ display: 'block', width: '100%', border: 1, borderRadius: 3, borderColor: '#9E9E9E' }}>
+              <CTRadio
+                sx={{
+                  color: '#9E9E9E',
+                }}
+                checked={selectedValue === 'b'}
+                onChange={handleChangeRatio}
+                value="b"
+                name="radio-buttons"
+                inputProps={{ 'aria-label': 'B' }}
+                size="small"
+              />
+              <Box sx={{ display: 'inline' }}>Equaly</Box>
+            </Box>
+          </Grid>
+          <Grid xs={4} md={4} sx={{}}>
+            <Box sx={{ display: 'block', width: '100%', border: 1, borderRadius: 3, borderColor: '#9E9E9E' }}>
+              <CTRadio
+                sx={{
+                  color: '#9E9E9E',
+                }}
+                checked={selectedValue === 'b'}
+                onChange={handleChangeRatio}
+                value="b"
+                name="radio-buttons"
+                inputProps={{ 'aria-label': 'B' }}
+                size="small"
+              />
+              <Box sx={{ display: 'inline' }}>Manual Import</Box>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Box sx={{ mt: 3 }}>
+          <InputLabel
+            size="small"
+            sx={{
+              color: '#D1D1D1',
+            }}
+            shrink
+            htmlFor="name"
+          >
+            Random Amount Range
+          </InputLabel>
+          <Grid container spacing={0} sx={{}}>
+            <Grid xs={5.8} md={5.8} sx={{}}>
+              <CTTextField
+                size="small"
+                fullWidth
+                id="name"
+                InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                value={initialSupply}
+                onChange={(event) => handleChange(event.target.value, setInitialSupply)}
+              />
+            </Grid>
+            <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" xs sx={{}}>
+              <Box>-</Box>
+            </Grid>
+            <Grid xs={5.8} md={5.8} sx={{}}>
+              <CTTextField
+                size="small"
+                fullWidth
+                id="name"
+                InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                value={initialSupply}
+                onChange={(event) => handleChange(event.target.value, setInitialSupply)}
+              />
+            </Grid>
+          </Grid>
+        </Box>
+
         <Grid sx={{ mt: 3 }}>
           <InputLabel
             sx={{
@@ -151,16 +288,26 @@ export default function Airdrop() {
             shrink
             htmlFor="name"
           >
-            Initial supply
+            Decimals
           </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={initialSupply}
-            onChange={(event) => handleChange(event.target.value, setInitialSupply)}
-          />
+          <Box sx={{ display: 'flex' }}>
+            <CTDecrementButton variant="contained" href="#contained-buttons">
+              -
+            </CTDecrementButton>
+            <CTTextField
+              fullWidth
+              size="small"
+              id="name"
+              type="number"
+              inputProps={{ min: 0, style: { textAlign: 'center' } }}
+              InputProps={{ sx: { color: '#9E9E9E', borderRadius: `0px 0px 0px 0px` } }}
+              value={decimals}
+              onChange={(event) => handleChange(event.target.value, setDecimals)}
+            />
+            <CTIncrementButton variant="contained" href="#contained-buttons">
+              +
+            </CTIncrementButton>
+          </Box>
         </Grid>
         <Grid sx={{ mt: 3 }}>
           <InputLabel
@@ -290,7 +437,7 @@ export default function Airdrop() {
             Create Token
           </CTButtom>
         </Grid>
-      </Grid>
+      </Box>
     </CoinToolLayout>
   )
 }
