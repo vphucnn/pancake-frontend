@@ -30,8 +30,8 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
 
   return (
     <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
-      <Grid width="1200px" container maxWidth="1200px">
-        <Grid xs={3} md={3} sx={{ minHeight: '100%', background: '#131313' }}>
+      <Box width="1200px" display="flex" maxWidth="1200px">
+        <Box sx={{ display: 'inline', minHeight: '100%', background: '#131313', minWidth: "250px" }}>
           <MenuList>
             {menuItems[0].items.map((item) => (
               <MenuItem>
@@ -53,11 +53,11 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
               </MenuItem>
             ))}
           </MenuList>
-        </Grid>
-        <Grid xs={9} md={9}>
+        </Box>
+        <Box sx={{ width: '100%' }}>  
           {children}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   )
 }
