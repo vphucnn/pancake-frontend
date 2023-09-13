@@ -8,6 +8,7 @@ import CTButtom from '../../views/Component/CTButtom'
 import { useMenuItems } from '../Menu/hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from '../Menu/utils'
 import USCitizenConfirmModal from '../Modal/USCitizenConfirmModal'
+import { CreateContractIcon } from '../../views/Component/Icon/CreactContractIcon'
 
 export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ children, ...props }) => {
   const { currentLanguage, setLanguage, t } = useTranslation()
@@ -29,32 +30,23 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
 
   return (
     <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
-      <Grid width='1200px' container maxWidth='1200px'>
-        <Grid xs={2} md={2} sx={{ minHeight: '100%', background: '#131313' }}>
+      <Grid width="1200px" container maxWidth="1200px">
+        <Grid xs={3} md={3} sx={{ minHeight: '100%', background: '#131313' }}>
           <MenuList>
             {menuItems[0].items.map((item) => (
               <MenuItem>
                 {item.href == activeSubMenuItem.href ? (
-                  <CTButtom
-                    sx={{
-                      width: '300px',
-                    }}
-                    variant="contained"
-                  >
-                    <ContentCut color="success" fontSize="small" />
-                    <Link href={item.href}>{item.label}</Link>
-                  </CTButtom>
+                  <MenuItem>
+                    <CreateContractIcon fill="#FFFFFF" />
+                    <Box sx={{ display: 'inline', ml: 3 }}>{item.label}</Box>
+                  </MenuItem>
                 ) : (
-                  <Button
-                    sx={{
-                      width: '300px',
-                      color: '#A2A3A4',
-                    }}
-                    variant="text"
-                  >
-                    <ContentCut color="success" fontSize="small" />
-                    <Link href={item.href}>{item.label}</Link>
-                  </Button>
+                  <Link style={{ textDecoration: 'none' }} href={item.href} underline="hover">
+                    <MenuItem>
+                      <CreateContractIcon sx={{ ml: 3 }} />
+                      <Box sx={{ display: 'inline', ml: 3 }}>{item.label}</Box>
+                    </MenuItem>
+                  </Link>
                 )}
 
                 {/* <Box sx={{ display: 'inline', ml: 3 }} >{item.label}</Box> */}
@@ -62,7 +54,7 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
             ))}
           </MenuList>
         </Grid>
-        <Grid xs={10} md={10}>
+        <Grid xs={9} md={9}>
           {children}
         </Grid>
       </Grid>
