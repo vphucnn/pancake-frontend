@@ -9,6 +9,11 @@ import { useMenuItems } from '../Menu/hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from '../Menu/utils'
 import USCitizenConfirmModal from '../Modal/USCitizenConfirmModal'
 import { CreateContractIcon } from '../../views/Component/Icon/CreactContractIcon'
+import CTMenuItem from 'views/Component/CTMenuItem'
+import CreateNFT from 'views/CreateNFT'
+import { CreateNFTIcon } from 'views/Component/Icon/CreateNFTIcon'
+import { AirDropIcon } from 'views/Component/Icon/AirDropIcon'
+import { StakingIcon } from 'views/Component/Icon/StakingIcon'
 
 export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ children, ...props }) => {
   const { currentLanguage, setLanguage, t } = useTranslation()
@@ -28,33 +33,52 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
     router.push(href)
   }
 
+  const getIconItemMenu = (href: string, fill: string) => {
+    switch (href) {
+      case '/coin-tools':
+        return <CreateContractIcon fill={fill} width="25" height="25" />
+        break;
+      case '/create-nft':
+        return <CreateNFTIcon fill={fill} width="25" height="25" />
+        break;
+      case '/airdrop':
+        return <AirDropIcon fill={fill} width="25" height="25" />
+        break;
+      case '/pools-staking':
+        return <StakingIcon fill={fill} width="25" height="25" />
+        break;
+      default:
+        return <CreateContractIcon fill={fill} width="25" height="25" />
+    }
+
+  }
+
   return (
     <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
       <Box width="1200px" display="flex" maxWidth="1200px">
         <Box sx={{ display: 'inline', minHeight: '100%', background: '#131313', minWidth: "250px" }}>
           <MenuList>
             {menuItems[0].items.map((item) => (
-              <MenuItem>
+              <>
                 {item.href === activeSubMenuItem.href ? (
-                  <MenuItem>
-                    <CreateContractIcon fill="#FFFFFF" />
-                    <Box sx={{ display: 'inline', ml: 3 }}>{item.label}</Box>
-                  </MenuItem>
+                  <CTMenuItem sx={{ m: 3 }} >
+                    {getIconItemMenu(item.href, '#A2A3A4')}
+                    <Box sx={{ display: 'inline', ml: 1 }}>{item.label}</Box>
+                  </CTMenuItem>
                 ) : (
-                  <Link style={{ textDecoration: 'none' }} href={item.href} underline="hover">
-                    <MenuItem>
-                      <CreateContractIcon sx={{ ml: 3 }} />
-                      <Box sx={{ display: 'inline', ml: 3 }}>{item.label}</Box>
-                    </MenuItem>
-                  </Link>
-                )}
+                  <MenuItem sx={{ m: 3 }}>
+                    <Link style={{ textDecoration: 'none' }} href={item.href} underline="hover">
+                      {getIconItemMenu(item.href, 'none')}
+                      <Box sx={{ display: 'inline', ml: 1 }}>{item.label}</Box>
+                    </Link>
+                  </MenuItem>
 
-                {/* <Box sx={{ display: 'inline', ml: 3 }} >{item.label}</Box> */}
-              </MenuItem>
+                )}
+              </>
             ))}
           </MenuList>
         </Box>
-        <Box sx={{ width: '100%' }}>  
+        <Box sx={{ width: '100%' }}>
           {children}
         </Box>
       </Box>

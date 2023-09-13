@@ -1,8 +1,9 @@
 export const CreateContractIcon = ({ ...props }) => {
+  console.log(props)
   return (
     <svg
-      width="27"
-      height="28"
+      width={props.width ? props.width : '27'}
+      height={props.height ? props.height : '27'}
       viewBox="0 0 27 28"
       fill={props.fill ? props.fill : 'none'}
       xmlns="http://www.w3.org/2000/svg"
@@ -15,7 +16,7 @@ export const CreateContractIcon = ({ ...props }) => {
       </g>
       <defs>
         <clipPath id="clip0_1733_15310">
-          <rect width="26.62" height="26.62" fill="white" transform="translate(0 0.986328)" />
+          <rect width="26.62" height="26.62" fill={props.fill ? props.fill : 'none'} transform="translate(0 0.986328)" />
         </clipPath>
       </defs>
     </svg>
