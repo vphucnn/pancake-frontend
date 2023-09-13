@@ -15,6 +15,16 @@ import {
 import { vars } from "../../css/vars.css";
 import { LogoWithTextIcon } from "../Svg";
 import { FooterProps } from "./types";
+import PoolsLogo from "../Svg/PoolsLogo";
+import styled from "styled-components";
+
+const StyledLink = styled("a")`
+  display: flex;
+  .logo {
+    width: 60px;
+  }
+`;
+
 
 const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   items,
@@ -31,19 +41,19 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
 }) => {
   const isMounted = useIsMounted();
   useEffect(() => {
-    if(!isDark)toggleTheme(true)
+    if (!isDark) toggleTheme(true)
   }, []);
   return (
-    <StyledFooter 
+    <StyledFooter
       p={["40px 16px", null, "56px 40px 32px 40px"]}
       position="relative"
       {...props}
       justifyContent="center"
     >
-      <Flex flexDirection="column" width={["100%", null, "1200px;"]}>
-        <StyledIconMobileContainer display={["block", null, "none"]}>
-          <LogoWithTextIcon width="130px" />
-        </StyledIconMobileContainer>
+      <Flex flexDirection="column" width={["100%", null]}>
+        {/* <StyledIconMobileContainer display={["block", null, "none"]}>
+          <PoolsLogo width="130px" />
+        </StyledIconMobileContainer> */}
         <Flex
           order={[2, null, 1]}
           flexDirection={["column", null, "row"]}
@@ -51,6 +61,9 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           alignItems="flex-start"
           mb={["42px", null, "36px"]}
         >
+          <StyledLink as="a">
+            <PoolsLogo className="logo" />
+          </StyledLink>
           {items?.map((item) => (
             <StyledList key={item.label}>
               <StyledListItem>{item.label}</StyledListItem>
@@ -74,9 +87,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
               ))}
             </StyledList>
           ))}
-          <Box display={["none", null, "block"]}>
-            <LogoWithTextIcon width="160px" />
-          </Box>
+
         </Flex>
         <StyledSocialLinks order={[2]} pb={["42px", null, "32px"]} mb={["0", null, "32px"]} />
         <StyledToolsContainer
