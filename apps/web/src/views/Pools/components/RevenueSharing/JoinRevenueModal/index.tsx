@@ -22,7 +22,7 @@ const TooltipContainer = styled(Box)`
   margin: 0 0 10px 10px;
   height: fit-content;
   border-radius: 16px;
-  background-color: ${({ theme }) => (theme.isDark ? '#FFFFFF' : '#00001')};
+  background-color: ${({ theme }) => (theme.isDark ? '#FFFFFF' : '#000000')};
 
   ${Text} {
     color: ${({ theme }) => (theme.isDark ? '#280D5F' : '#F4EEFF')};
@@ -37,7 +37,7 @@ const TooltipContainer = styled(Box)`
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: ${({ theme }) => (theme.isDark ? '10px solid #FFFFFF' : '10px solid #00001')};
+    border-left: ${({ theme }) => (theme.isDark ? '10px solid #FFFFFF' : '10px solid #000000')};
   }
 
   ${({ theme }) => theme.mediaQueries.sm} {
