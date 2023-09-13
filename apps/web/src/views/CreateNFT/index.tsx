@@ -271,10 +271,6 @@ export default function CreateNFT() {
             value={name}
             onChange={(event) => handleChange(event.target.value, setTxFee)}
           />
-          <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
-            Specify the tax / fee in basis points (bps), i.e. 1% is equal to 100 bps. Example: to charge a tax / fee of
-            3.5%, enter the number 350. Can be updated after initial token creation.
-          </Box>
         </Grid>
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom

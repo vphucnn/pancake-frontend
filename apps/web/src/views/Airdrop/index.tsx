@@ -284,7 +284,6 @@ export default function Airdrop() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
             shrink
             htmlFor="name"
           >
@@ -309,107 +308,29 @@ export default function Airdrop() {
             </CTIncrementButton>
           </Box>
         </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
-            sx={{
-              color: '#D1D1D1',
-            }}
-            required
-            shrink
-            htmlFor="name"
-          >
-            Decimals (0-18)
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={decimals}
-            onChange={(event) => handleChange(event.target.value, setDecimals)}
-          />
-        </Grid>
-        <Typography
-          variant="h6"
-          component="h6"
-          sx={{
-            color: '#D1D1D1',
-          }}
-        >
-          Token configuration
-        </Typography>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canBurn}
-            onChange={(event) => handleChange(event.target.checked, setCanBurn)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Burn</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canMint}
-            onChange={(event) => handleChange(event.target.checked, setCanMint)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Mint</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canPause}
-            onChange={(event) => handleChange(event.target.checked, setCanPause)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Pause</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canBlacklist}
-            onChange={(event) => handleChange(event.target.checked, setCanBlacklist)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Blacklist</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={applyTxFee}
-            onChange={(event) => handleChange(event.target.checked, setApplyTxFee)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Apply Burn Fee (Deflationary token )</Box>
-        </Grid>
 
         <Grid sx={{ mt: 3 }}>
           <InputLabel
             sx={{
+              display: 'inline',
               color: '#D1D1D1',
             }}
             shrink
             htmlFor="name"
           >
-            Recipient address
+            Address List
           </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setRecipientAddress)}
-          />
-          <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
-            Can be updated after initial token creation.
-          </Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
           <InputLabel
             sx={{
+              display: 'inline',
+
               color: '#D1D1D1',
+              float: 'right',
             }}
             shrink
             htmlFor="name"
           >
-            Can be updated after initial token creation.
+            Upload File
           </InputLabel>
           <CTTextField
             size="small"
@@ -419,11 +340,8 @@ export default function Airdrop() {
             value={name}
             onChange={(event) => handleChange(event.target.value, setTxFee)}
           />
-          <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
-            Specify the tax / fee in basis points (bps), i.e. 1% is equal to 100 bps. Example: to charge a tax / fee of
-            3.5%, enter the number 350. Can be updated after initial token creation.
-          </Box>
         </Grid>
+
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom
             className="show"
