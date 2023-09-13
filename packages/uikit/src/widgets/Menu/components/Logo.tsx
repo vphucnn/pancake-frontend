@@ -3,6 +3,7 @@ import { styled, keyframes } from "styled-components";
 import Flex from "../../../components/Box/Flex";
 import { LogoIcon, LogoWithTextIcon } from "../../../components/Svg";
 import { MenuContext } from "../context";
+import PoolsLogo from "../../../components/Svg/PoolsLogo";
 
 interface Props {
   href: string;
@@ -20,6 +21,9 @@ const StyledLink = styled("a")`
     ${({ theme }) => theme.mediaQueries.lg} {
       display: none;
     }
+  }
+  .logo {
+    width: 32px;
   }
   .desktop-icon {
     width: 160px;
@@ -46,8 +50,10 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
-      <LogoIcon className="mobile-icon" />
-      <LogoWithTextIcon className="desktop-icon" />
+      <PoolsLogo className="logo" />
+      {/* <PoolsLogo className="desktop-icon" /> */}
+      {/* <LogoIcon className="mobile-icon" />
+      <LogoWithTextIcon className="desktop-icon" /> */}
     </>
   );
 
