@@ -64,13 +64,13 @@ export default function CreateNFT() {
 
   async function onSubmit() {
     try {
-      const data = await walletClient?.deployContract({
+      const response = await walletClient?.deployContract({
         abi: helloWorldTokenAbi,
         bytecode: helloWorldBytecode as `0x${string}`,
         args: [],
         chain,
       })
-      setHash(data)
+      setHash(response)
     } catch (e) {
       toastError(e as string)
     }
@@ -220,7 +220,7 @@ export default function CreateNFT() {
           />
           <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
             This is the price to mint one NFT. If the price is set to 0, minting is free. Fees are transferred directly
-            to the creator's wallet
+            to the creator&apos;s wallet
           </Box>
         </Grid>
         <Grid sx={{ mt: 3 }}>

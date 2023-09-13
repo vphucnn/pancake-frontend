@@ -150,11 +150,6 @@ const config = {
         permanent: true,
       },
       {
-        source: '/staking',
-        destination: '/pools',
-        permanent: true,
-      },
-      {
         source: '/syrup',
         destination: '/pools',
         permanent: true,

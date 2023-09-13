@@ -51,7 +51,7 @@ const config: (
         },
         {
           label: t('Staking'),
-          href: '/staking',
+          href: '/pools-staking',
         },
         // {
         //   label: t('Liquidity'),

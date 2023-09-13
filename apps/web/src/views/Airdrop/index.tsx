@@ -16,14 +16,11 @@ import USCitizenConfirmModal from '../../components/Modal/USCitizenConfirmModal'
 import { IdType } from '../../hooks/useUserIsUsCitizenAcknowledgement'
 import CTButtom from '../Component/CTButtom'
 import CTTextField from '../Component/CTextField'
-import IOSSwitch from '../Component/IOSSwithc'
-import InputSpinner from 'react-bootstrap-input-spinner'
 
 import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
-import { Button, Radio } from '@mui/material'
-import CTRadio from '../Component/CTRadio'
-import CTIncrementButton from '../Component/CTIncrementButton '
 import CTDecrementButton from '../Component/CTDecrementButton '
+import CTIncrementButton from '../Component/CTIncrementButton '
+import CTRadio from '../Component/CTRadio'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -69,13 +66,13 @@ export default function Airdrop() {
 
   async function onSubmit() {
     try {
-      const data = await walletClient?.deployContract({
+      const response = await walletClient?.deployContract({
         abi: helloWorldTokenAbi,
         bytecode: helloWorldBytecode as `0x${string}`,
         args: [],
         chain,
       })
-      setHash(data)
+      setHash(response)
     } catch (e) {
       toastError(e as string)
     }
@@ -84,7 +81,6 @@ export default function Airdrop() {
   const handleChange = (value, f) => {
     f(value)
   }
-
   //ratio
   const [selectedValue, setSelectedValue] = React.useState('a')
 

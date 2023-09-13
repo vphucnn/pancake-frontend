@@ -19,6 +19,7 @@ import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
 import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
+import { Divider } from '@mui/material'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -64,13 +65,13 @@ export default function Staking() {
 
   async function onSubmit() {
     try {
-      const data = await walletClient?.deployContract({
+      const response = await walletClient?.deployContract({
         abi: helloWorldTokenAbi,
         bytecode: helloWorldBytecode as `0x${string}`,
         args: [],
         chain,
       })
-      setHash(data)
+      setHash(response)
     } catch (e) {
       toastError(e as string)
     }
@@ -91,8 +92,63 @@ export default function Staking() {
           pt: 2,
         }}
       >
-        Contract generator {canBurn.toString()}
+        Staking {canBurn.toString()}
       </Typography>
+      <Divider
+        variant="middle"
+        sx={{
+          widht: '80%',
+          bgcolor: '#D1D1D1',
+          ml: 5,
+          mt: 2,
+        }}
+      />
+
+      <Grid container sx={{ pl: 5, pt: 2 }}>
+        <Grid xs={6} md={6}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            0.00324797  ≈  0.00324797
+          </Typography>
+        </Grid>
+        <Grid xs={6} md={6} container alignItems="right" justifyContent="right">
+          <CTButtom
+            className="show"
+            sx={{
+              width: '300px',
+              borderRadius: 2,
+            }}
+            variant="contained"
+            onClick={onSubmit}
+          >
+            Create Token
+          </CTButtom>
+        </Grid>
+      </Grid>
+
+      <Divider
+        variant="middle"
+        sx={{
+          widht: '80%',
+          bgcolor: '#D1D1D1',
+          ml: 5,
+          mt: 2,
+        }}
+      />
 
       <Grid sx={{ pl: 5, pt: 2 }}>
         <Typography
