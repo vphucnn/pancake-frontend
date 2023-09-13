@@ -35,7 +35,7 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
           <MenuList>
             {menuItems[0].items.map((item) => (
               <MenuItem>
-                {item.href == activeSubMenuItem.href ? (
+                {item.href === activeSubMenuItem.href ? (
                   <MenuItem>
                     <CreateContractIcon fill="#FFFFFF" />
                     <Box sx={{ display: 'inline', ml: 3 }}>{item.label}</Box>

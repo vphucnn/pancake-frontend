@@ -43,7 +43,7 @@ export default function Airdrop() {
   const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
 
-  // parameter contract
+  /* parameter contract */
   const [name, setName] = React.useState('')
   const [symbol, setSymbol] = React.useState()
   const [initialSupply, setInitialSupply] = React.useState()
@@ -58,7 +58,7 @@ export default function Airdrop() {
   const { data, isError, isLoading } = useBalance({
     address: useAccount().address,
   })
-  // submit
+  /* submit */
   const { data: walletClient } = useWalletClient()
   const { chain, chains } = useNetwork()
   const [hash, setHash] = React.useState<undefined | `0x${string}`>()
@@ -81,7 +81,7 @@ export default function Airdrop() {
   const handleChange = (value, f) => {
     f(value)
   }
-  //ratio
+  /* ratio */
   const [selectedValue, setSelectedValue] = React.useState('a')
 
   const handleChangeRatio = (event: React.ChangeEvent<HTMLInputElement>) => {

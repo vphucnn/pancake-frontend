@@ -90,7 +90,7 @@ const DropdownMenu: React.FC<React.PropsWithChildren<DropdownMenuProps>> = ({
         {children}
       </Box>
       {/* hasItems */}
-      { false && (
+      {false && (
         <StyledDropdownMenu
           style={styles.popper}
           ref={setTooltipRef}
@@ -98,7 +98,7 @@ const DropdownMenu: React.FC<React.PropsWithChildren<DropdownMenuProps>> = ({
           $isBottomNav={isBottomNav}
           $isOpen={isMenuShow}
         >
-          {[items]
+          {items
             .filter((item) => !item.isMobileOnly)
             .map(
               (

@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2'
+import { Divider } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useTranslation } from '@pancakeswap/localization'
 import { useRouter } from 'next/router'
@@ -19,7 +20,6 @@ import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
 import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
-import { Divider } from '@mui/material'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -42,7 +42,8 @@ export default function Staking() {
   const activeMenuItem = getActiveMenuItem({ menuConfig: menuItems, pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
 
-  // parameter contract
+  /* parameter contract */
+
   const [name, setName] = React.useState('')
   const [symbol, setSymbol] = React.useState()
   const [initialSupply, setInitialSupply] = React.useState()
@@ -57,7 +58,9 @@ export default function Staking() {
   const { data, isError, isLoading } = useBalance({
     address: useAccount().address,
   })
-  // submit
+
+  /* submit */
+
   const { data: walletClient } = useWalletClient()
   const { chain, chains } = useNetwork()
   const [hash, setHash] = React.useState<undefined | `0x${string}`>()

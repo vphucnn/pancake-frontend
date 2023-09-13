@@ -67,7 +67,7 @@ export default function CoinTools() {
       let brunAddress = '0x0000000000000000000000000000000000000000'
       let brunFee = 0
       if (applyBrunFee) {
-        brunAddress = recipientAddress ? recipientAddress : '0x0000000000000000000000000000000000000000'
+        if (recipientAddress) brunAddress = recipientAddress
         brunFee = txFee
       }
       const response = await walletClient?.deployContract({
