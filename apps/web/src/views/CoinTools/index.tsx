@@ -114,7 +114,7 @@ export default function CoinTools() {
           >
             Token Name
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
@@ -133,7 +133,7 @@ export default function CoinTools() {
           >
             Symbol
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
@@ -153,7 +153,7 @@ export default function CoinTools() {
           >
             Initial supply
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
@@ -173,7 +173,7 @@ export default function CoinTools() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
@@ -242,7 +242,7 @@ export default function CoinTools() {
           >
             Recipient address
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
@@ -264,7 +264,7 @@ export default function CoinTools() {
           >
             Can be updated after initial token creation.
           </InputLabel>
-          <CTTextField size='small'
+          <CTTextField
             size="small"
             fullWidth
             id="name"
