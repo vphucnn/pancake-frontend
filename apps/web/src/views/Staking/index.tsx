@@ -93,7 +93,7 @@ export default function Staking() {
           >
             Token Name
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -111,7 +111,7 @@ export default function Staking() {
           >
             Symbol
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -130,7 +130,7 @@ export default function Staking() {
           >
             Initial supply
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -149,7 +149,7 @@ export default function Staking() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -198,7 +198,7 @@ export default function Staking() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -220,7 +220,7 @@ export default function Staking() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}

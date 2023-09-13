@@ -92,7 +92,7 @@ export default function Airdrop() {
           >
             Token Name
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -110,7 +110,7 @@ export default function Airdrop() {
           >
             Symbol
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -129,7 +129,7 @@ export default function Airdrop() {
           >
             Initial supply
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -148,7 +148,7 @@ export default function Airdrop() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -197,7 +197,7 @@ export default function Airdrop() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -219,7 +219,7 @@ export default function Airdrop() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}

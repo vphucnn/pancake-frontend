@@ -114,7 +114,8 @@ export default function CoinTools() {
           >
             Token Name
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -132,7 +133,8 @@ export default function CoinTools() {
           >
             Symbol
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -151,7 +153,8 @@ export default function CoinTools() {
           >
             Initial supply
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -170,7 +173,8 @@ export default function CoinTools() {
           >
             Decimals (0-18)
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -238,7 +242,8 @@ export default function CoinTools() {
           >
             Recipient address
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
@@ -259,7 +264,8 @@ export default function CoinTools() {
           >
             Can be updated after initial token creation.
           </InputLabel>
-          <CTTextField
+          <CTTextField size='small'
+            size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
