@@ -61,9 +61,12 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           alignItems="flex-start"
           mb={["42px", null, "36px"]}
         >
-          <StyledLink as="a">
-            <PoolsLogo className="logo" />
-          </StyledLink>
+          <Box>
+            <StyledLink as="a">
+              <PoolsLogo className="logo" />
+            </StyledLink>
+            <h1>OK</h1>
+          </Box>
           {items?.map((item) => (
             <StyledList key={item.label}>
               <StyledListItem>{item.label}</StyledListItem>
