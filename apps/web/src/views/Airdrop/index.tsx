@@ -233,7 +233,7 @@ export default function Airdrop() {
         </Grid>
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom
-            className={'show'}
+            className='show'
             sx={{
               width: '300px',
               borderRadius: 2,

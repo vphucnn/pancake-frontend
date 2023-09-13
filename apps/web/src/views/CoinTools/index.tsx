@@ -67,13 +67,14 @@ export default function CoinTools() {
         component="h2"
         sx={{
           color: 'white',
-          p: 2,
+          pl: 5,
+          pt: 2,
         }}
       >
         Contract generator
       </Typography>
 
-      <Grid sx={{ p: 2 }}>
+      <Grid sx={{ pl: 5, pt: 2 }}>
         <Typography
           variant="h6"
           component="h6"
@@ -234,7 +235,7 @@ export default function CoinTools() {
         </Grid>
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom
-            className={'show'}
+            className="show"
             sx={{
               width: '300px',
               borderRadius: 2,

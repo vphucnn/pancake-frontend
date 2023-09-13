@@ -29,7 +29,7 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
 
   return (
     <Box sx={{ p: 10, minHeight: '100%' }} display="flex" justifyContent="center">
-      <Grid width={'1200px'} container maxWidth={'1200px'}>
+      <Grid width='1200px' container maxWidth='1200px'>
         <Grid xs={2} md={2} sx={{ minHeight: '100%', background: '#131313' }}>
           <MenuList>
             {menuItems[0].items.map((item) => (
