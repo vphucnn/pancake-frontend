@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }))
 
-export default function CoinTools() {
+export default function Airdrop() {
   const { currentLanguage, setLanguage, t } = useTranslation()
   const [onUSCitizenModalPresent] = useModal(
     <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} />,
@@ -58,8 +58,6 @@ export default function CoinTools() {
 
   if (isLoading) return <div>Fetching balance…</div>
   if (isError) return <div>Error fetching balance</div>
-  console.log(333)
-  console.log(activeSubMenuItem)
   return (
     <CoinToolLayout>
       <Typography
@@ -67,13 +65,14 @@ export default function CoinTools() {
         component="h2"
         sx={{
           color: 'white',
-          p: 2,
+          pl: 5,
+          pt: 2,
         }}
       >
         Contract generator
       </Typography>
 
-      <Grid sx={{ p: 2 }}>
+      <Grid sx={{ pl: 5, pt: 2 }}>
         <Typography
           variant="h6"
           component="h6"

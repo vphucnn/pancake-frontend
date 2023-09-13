@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }))
 
-export default function CoinTools() {
+export default function Staking() {
   const { currentLanguage, setLanguage, t } = useTranslation()
   const [onUSCitizenModalPresent] = useModal(
     <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} />,
@@ -234,7 +234,7 @@ export default function CoinTools() {
         </Grid>
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom
-            className={'show'}
+            className='show'
             sx={{
               width: '300px',
               borderRadius: 2,

@@ -28,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }))
 
-export default function CoinTools() {
+export default function CreateNFT() {
   const { currentLanguage, setLanguage, t } = useTranslation()
   const [onUSCitizenModalPresent] = useModal(
     <USCitizenConfirmModal title={t('PancakeSwap Perpetuals')} id={IdType.PERPETUALS} />,

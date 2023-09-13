@@ -43,15 +43,15 @@ const config: (
         },
         {
           label: t('Create NFT contract'),
-          href: '/mint-nft',
+          href: '/create-nft',
         },
         {
-          label: t('Aidrop'),
-          href: '/deploy',
+          label: t('Airdrop'),
+          href: '/airdrop',
         },
         {
           label: t('Staking'),
-          href: '/deploy',
+          href: '/staking',
         },
         // {
         //   label: t('Liquidity'),
