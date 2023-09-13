@@ -18,7 +18,7 @@ import CTButtom from '../Component/CTButtom'
 import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
-import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
+import { Bytecode as ERC20TokenBytecode, Abi as ERC20TokenTokenAbi } from '../../constract/ERC20Token.json'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -50,7 +50,7 @@ export default function CoinTools() {
   const [canMint, setCanMint] = React.useState(false)
   const [canPause, setCanPause] = React.useState(false)
   const [canBlacklist, setCanBlacklist] = React.useState(false)
-  const [applyTxFee, setApplyTxFee] = React.useState(false)
+  const [applyBrunFee, setApplyBrunFee] = React.useState(false)
   const [recipientAddress, setRecipientAddress] = React.useState()
   const [txFee, setTxFee] = React.useState()
   const { data, isError, isLoading } = useBalance({
@@ -64,10 +64,16 @@ export default function CoinTools() {
 
   async function onSubmit() {
     try {
+      let brunAddress = '0x0000000000000000000000000000000000000000'
+      let brunFee = 0
+      if (applyBrunFee) {
+        brunAddress = recipientAddress ? recipientAddress : '0x0000000000000000000000000000000000000000'
+        brunFee = txFee
+      }
       const response = await walletClient?.deployContract({
-        abi: helloWorldTokenAbi,
-        bytecode: helloWorldBytecode as `0x${string}`,
-        args: [],
+        abi: ERC20TokenTokenAbi,
+        bytecode: ERC20TokenBytecode as `0x${string}`,
+        args: [name, symbol, initialSupply, decimals, canBurn, canMint, canPause, canBlacklist, brunAddress, brunFee],
         chain,
       })
       setHash(response)
@@ -147,7 +153,6 @@ export default function CoinTools() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
             shrink
             htmlFor="name"
           >
@@ -167,7 +172,6 @@ export default function CoinTools() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
             shrink
             htmlFor="name"
           >
@@ -225,8 +229,8 @@ export default function CoinTools() {
         </Grid>
         <Grid sx={{ mt: 3 }}>
           <IOSSwitch
-            checked={applyTxFee}
-            onChange={(event) => handleChange(event.target.checked, setApplyTxFee)}
+            checked={applyBrunFee}
+            onChange={(event) => handleChange(event.target.checked, setApplyBrunFee)}
             inputProps={{ 'aria-label': 'controlled' }}
           />
           <Box sx={{ display: 'inline', ml: 3 }}>Apply Burn Fee (Deflationary token )</Box>
@@ -247,7 +251,7 @@ export default function CoinTools() {
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
+            value={recipientAddress}
             onChange={(event) => handleChange(event.target.value, setRecipientAddress)}
           />
           <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
@@ -268,8 +272,8 @@ export default function CoinTools() {
             size="small"
             fullWidth
             id="name"
+            value={txFee}
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
             onChange={(event) => handleChange(event.target.value, setTxFee)}
           />
           <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>

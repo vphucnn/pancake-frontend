@@ -18,7 +18,7 @@ import CTButtom from '../Component/CTButtom'
 import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
-import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
+import { Abi as ERC721NFTAbi, Bytecode as ERC721NFTBytecode } from '../../constract/ERC721NFT.json'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -44,15 +44,15 @@ export default function CreateNFT() {
   // parameter contract
   const [name, setName] = React.useState('')
   const [symbol, setSymbol] = React.useState()
-  const [initialSupply, setInitialSupply] = React.useState()
-  const [decimals, setDecimals] = React.useState()
-  const [canBurn, setCanBurn] = React.useState(false)
-  const [canMint, setCanMint] = React.useState(false)
+  const [collectionSize, setCollectionSize] = React.useState()
+  const [metaLink, setMetaLink] = React.useState()
+  const [enablePublicMint, setEnablePublicMint] = React.useState(false)
+  const [enableWhiteList, setEnableWhiteList] = React.useState(false)
   const [canPause, setCanPause] = React.useState(false)
   const [canBlacklist, setCanBlacklist] = React.useState(false)
   const [applyTxFee, setApplyTxFee] = React.useState(false)
-  const [recipientAddress, setRecipientAddress] = React.useState()
-  const [txFee, setTxFee] = React.useState()
+  const [mintPrice, setMintPrice] = React.useState(0)
+  const [whiteList, setWhiteList] = React.useState()
   const { data, isError, isLoading } = useBalance({
     address: useAccount().address,
   })
@@ -63,11 +63,15 @@ export default function CreateNFT() {
   const { toastSuccess, toastError } = useToast()
 
   async function onSubmit() {
+    let wList = []
+    if (enableWhiteList && whiteList) {
+      wList = whiteList
+    }
     try {
       const response = await walletClient?.deployContract({
-        abi: helloWorldTokenAbi,
-        bytecode: helloWorldBytecode as `0x${string}`,
-        args: [],
+        abi: ERC721NFTAbi,
+        bytecode: ERC721NFTBytecode as `0x${string}`,
+        args: [name, symbol, metaLink, collectionSize, enablePublicMint, mintPrice, wList],
         chain,
       })
       setHash(response)
@@ -91,7 +95,7 @@ export default function CreateNFT() {
           pt: 2,
         }}
       >
-        Create NFT Contract {canBurn.toString()}
+        Create NFT Contract
       </Typography>
 
       <Grid sx={{ pl: 5, pt: 2 }}>
@@ -158,8 +162,8 @@ export default function CreateNFT() {
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={initialSupply}
-            onChange={(event) => handleChange(event.target.value, setInitialSupply)}
+            value={collectionSize}
+            onChange={(event) => handleChange(event.target.value, setCollectionSize)}
           />
         </Grid>
         <Grid sx={{ mt: 3 }}>
@@ -171,15 +175,15 @@ export default function CreateNFT() {
             shrink
             htmlFor="name"
           >
-            Description
+            Metadata Link
           </InputLabel>
           <CTTextField
             size="small"
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={decimals}
-            onChange={(event) => handleChange(event.target.value, setDecimals)}
+            value={metaLink}
+            onChange={(event) => handleChange(event.target.value, setMetaLink)}
           />
         </Grid>
         <Typography
@@ -193,8 +197,8 @@ export default function CreateNFT() {
         </Typography>
         <Grid sx={{ mt: 3 }}>
           <IOSSwitch
-            checked={canBurn}
-            onChange={(event) => handleChange(event.target.checked, setCanBurn)}
+            checked={enablePublicMint}
+            onChange={(event) => handleChange(event.target.checked, setEnablePublicMint)}
             inputProps={{ 'aria-label': 'controlled' }}
           />
           <Box sx={{ display: 'inline', ml: 3 }}>Enable Public Minting</Box>
@@ -215,8 +219,8 @@ export default function CreateNFT() {
             fullWidth
             id="name"
             InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setRecipientAddress)}
+            value={mintPrice}
+            onChange={(event) => handleChange(event.target.value, setMintPrice)}
           />
           <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
             This is the price to mint one NFT. If the price is set to 0, minting is free. Fees are transferred directly
@@ -234,44 +238,47 @@ export default function CreateNFT() {
             White List
           </InputLabel>
           <IOSSwitch
-            checked={canMint}
-            onChange={(event) => handleChange(event.target.checked, setCanMint)}
+            checked={enableWhiteList}
+            onChange={(event) => handleChange(event.target.checked, setEnableWhiteList)}
             inputProps={{ 'aria-label': 'controlled' }}
           />
         </Grid>
 
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
-            sx={{
-              display: 'inline',
-              color: '#D1D1D1',
-            }}
-            shrink
-            htmlFor="name"
-          >
-            Address List
-          </InputLabel>
-          <InputLabel
-            sx={{
-              display: 'inline',
+        {enableWhiteList ? (
+          <Grid sx={{ mt: 3 }}>
+            <InputLabel
+              sx={{
+                display: 'inline',
+                color: '#D1D1D1',
+              }}
+              shrink
+              htmlFor="name"
+            >
+              Address List
+            </InputLabel>
+            <InputLabel
+              sx={{
+                display: 'inline',
 
-              color: '#D1D1D1',
-              float: 'right',
-            }}
-            shrink
-            htmlFor="name"
-          >
-            Upload File
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setTxFee)}
-          />
-        </Grid>
+                color: '#D1D1D1',
+                float: 'right',
+              }}
+              shrink
+              htmlFor="name"
+            >
+              Upload File
+            </InputLabel>
+            <CTTextField
+              size="small"
+              fullWidth
+              id="name"
+              InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+              value={whiteList}
+              onChange={(event) => handleChange(event.target.value, setWhiteList)}
+            />
+          </Grid>
+        ) : null}
+
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
           <CTButtom
             className="show"
