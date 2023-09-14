@@ -60,7 +60,7 @@ const config: (
       items: [
         {
           label: t('Contract generator'),
-          href: '/coin-tools',
+          href: '/',
         },
         {
           label: t('Create NFT contract'),
