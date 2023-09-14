@@ -57,7 +57,7 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
       <Box width="1200px" display="flex" maxWidth="1200px">
         <Box sx={{ display: 'inline', minHeight: '100%', background: '#131313', minWidth: '250px' }}>
           <MenuList>
-            {menuItems[0].items.map((item) => (
+            {menuItems[3].items.map((item) => (
               <>
                 {activeSubMenuItem && activeSubMenuItem.href && (item.href === activeSubMenuItem.href) ? (
                   <CTMenuItem sx={{ m: 3 }}>

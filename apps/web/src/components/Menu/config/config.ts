@@ -27,16 +27,37 @@ const config: (
 ) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
   [
     {
-      label: t('Trade'),
+      label: t('POOLS Chain'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
-      href: '/coin-tools',
+      href: 'https://scan.poolsmobility.com',
+      showItemsOnMobile: false,
+      items: [].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('dApps'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: 'https://www.poolschain.org/#d-apps',
+      showItemsOnMobile: false,
+      items: [].map((item) => addMenuItemSupported(item, chainId)),
+    },
+
+    {
+      label: t('Community'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: 'https://www.poolschain.org/#community',
+      showItemsOnMobile: false,
+      items: [].map((item) => addMenuItemSupported(item, chainId)),
+    },
+    {
+      label: t('Tools'),
+      icon: SwapIcon,
+      fillIcon: SwapFillIcon,
+      href: '/',
       showItemsOnMobile: false,
       items: [
-        // {
-        //   label: t('Swap'),
-        //   href: '/swap',
-        // },
         {
           label: t('Contract generator'),
           href: '/coin-tools',
@@ -45,56 +66,17 @@ const config: (
           label: t('Create NFT contract'),
           href: '/create-nft',
         },
-        // {
-        //   label: t('Airdrop'),
-        //   href: '/airdrop',
-        // },
-        // {
-        //   label: t('Staking'),
-        //   href: '/pools-staking',
-        // },
-        // {
-        //   label: t('Liquidity'),
-        //   href: '/liquidity',
-        // },
-        // {
-        //   label: t('Perpetual'),
-        //   href: getPerpetualUrl({
-        //     chainId,
-        //     languageCode,
-        //     isDark,
-        //   }),
-        //   confirmModalId: 'usCitizenConfirmModal',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-        // {
-        //   label: t('Bridge'),
-        //   href: 'https://bridge.pancakeswap.finance/',
-        //   type: DropdownMenuItemType.EXTERNAL_LINK,
-        // },
-        // {
-        //   label: `${t('Limit')} (V2)`,
-        //   href: '/limit-orders',
-        //   supportChainIds: SUPPORT_ONLY_BSC,
-        //   image: '/images/decorations/3d-coin.png',
-        // },
-        // {
-        //   label: t('Buy Crypto'),
-        //   href: '/buy-crypto',
-        //   supportChainIds: SUPPORT_BUY_CRYPTO,
-        // },
       ].map((item) => addMenuItemSupported(item, chainId)),
     },
     {
-      label: t('deploy'),
+      label: t('About'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
-      href: '/deploy',
+      href: 'https://www.poolsmobility.com/',
       showItemsOnMobile: false,
-      items: [
-  
-      ].map((item) => addMenuItemSupported(item, chainId)),
+      items: [].map((item) => addMenuItemSupported(item, chainId)),
     },
+
     // {
     //   label: t('Earn'),
     //   href: '/farms',

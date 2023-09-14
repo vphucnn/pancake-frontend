@@ -144,12 +144,12 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
           <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
             {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}
             <Flex justifyContent="center">
-              <Flex flexDirection="column" width={["100%", null, "1500px"]}>
+              <Flex flexDirection="column" width={["100%", null, "1600px"]}>
                 <StyledNav>
-                  <Flex>
-                    <Logo href={homeLink?.href ?? "/"} />
+                  <Logo href={homeLink?.href ?? "/"} />
+                  <Flex justifyContent="center" alignItems="center">
                     <Box mt="10px">
-                      <AtomBox display={{ xs: "none", md: "block" }} >
+                      <AtomBox display={{ xs: "none", md: "block" }}>
                         <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
                       </AtomBox>
                     </Box>
