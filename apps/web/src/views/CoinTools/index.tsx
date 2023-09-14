@@ -45,7 +45,7 @@ export default function CoinTools() {
   const [name, setName] = React.useState('')
   const [symbol, setSymbol] = React.useState()
   const [initialSupply, setInitialSupply] = React.useState()
-  const [decimals, setDecimals] = React.useState()
+  const [decimals, setDecimals] = React.useState(18)
   const [canBurn, setCanBurn] = React.useState(false)
   const [canMint, setCanMint] = React.useState(false)
   const [canPause, setCanPause] = React.useState(false)
