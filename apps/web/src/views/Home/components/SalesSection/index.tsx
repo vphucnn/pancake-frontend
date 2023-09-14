@@ -1,6 +1,7 @@
 import { Flex, Text, Button, Link, NextLinkFromReactRouter as RouterLink, OpenNewIcon } from '@pancakeswap/uikit'
 import CompositeImage, { CompositeImageProps } from '../CompositeImage'
 import ColoredWordHeading from '../ColoredWordHeading'
+import { StyledSocialLinks } from '../../../../../../../packages/uikit/src/components/Footer/styles'
 
 interface SalesSectionButton {
   to: string
@@ -29,16 +30,19 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
       >
         <Flex
           flexDirection="column"
-          flex="1"
-          ml={[null, null, null, reverse && '64px']}
-          mr={[null, null, null, !reverse && '64px']}
+          flex="0.8"
+          mt={['60px', null, null, reverse && '64px']}
+          ml={['100px', null, null, reverse && '64px']}
+          mr={['100px', null, null, !reverse && '64px']}
           alignSelf={['flex-start', null, null, 'center']}
         >
           <ColoredWordHeading text={headingText} />
-          <Text color="textSubtle" mb="24px">
+          <Text color="#FFFFFF" mb="24px">
             {bodyText}
           </Text>
-          <Flex>
+          <StyledSocialLinks  order={[2]} pb={['42px', null, '32px']} mb={['0', null, '32px']} />
+
+          {/* <Flex>
             <Button mr="16px">
               {primaryButton.external ? (
                 <Link external href={primaryButton.to}>
@@ -62,7 +66,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
             ) : (
               <RouterLink to={secondaryButton.to}>{secondaryButton.text}</RouterLink>
             )}
-          </Flex>
+          </Flex> */}
         </Flex>
         <Flex
           height={['192px', null, null, '100%']}
@@ -70,7 +74,7 @@ const SalesSection: React.FC<React.PropsWithChildren<SalesSectionProps>> = (prop
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}
         >
-          <CompositeImage {...images} />
+          {/* <CompositeImage {...images} /> */}
         </Flex>
       </Flex>
     </Flex>

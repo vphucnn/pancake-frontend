@@ -1,5 +1,4 @@
 export const AirDropIcon = ({ ...props }) => {
-  console.log(props.fill)
   return (
     <svg
       width={props.width ? props.width : '27'}

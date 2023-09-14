@@ -125,6 +125,11 @@ const config = {
   async redirects() {
     return [
       {
+        source: '/coin-tools',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/send',
         destination: '/swap',
         permanent: true,

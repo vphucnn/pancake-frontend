@@ -81,6 +81,7 @@ export const socials = [
     label: "Twitter",
     icon: TwitterIcon,
     href: "https://twitter.com/pancakeswap",
+    data: '19k Wallets'
   },
   {
     label: "Telegram",
@@ -151,32 +152,36 @@ export const socials = [
         href: "https://t.me/PancakeSwapAnn",
       },
     ],
+    data: '196k+'
   },
   {
     label: "Reddit",
     icon: RedditIcon,
     href: "https://reddit.com/r/pancakeswap",
+    data: '196k+'
   },
   {
     label: "Instagram",
     icon: InstagramIcon,
     href: "https://instagram.com/pancakeswap_official",
+    data: '256k+'
   },
   {
     label: "Github",
     icon: GithubIcon,
     href: "https://github.com/pancakeswap/",
   },
-  {
-    label: "Discord",
-    icon: DiscordIcon,
-    href: "https://discord.gg/pancakeswap",
-  },
-  {
-    label: "Youtube",
-    icon: YoutubeIcon,
-    href: "https://www.youtube.com/@pancakeswap_official",
-  },
+  // {
+  //   label: "Discord",
+  //   icon: DiscordIcon,
+  //   href: "https://discord.gg/pancakeswap",
+  // },
+  // {
+  //   label: "Youtube",
+  //   icon: YoutubeIcon,
+  //   href: "https://www.youtube.com/@pancakeswap_official",
+  // },
+  
 ];
 
 export const langs: Language[] = [...Array(20)].map((_, i) => ({

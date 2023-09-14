@@ -3,8 +3,7 @@ import { darkColors } from "../../theme/colors";
 import { Box, Flex } from "../Box";
 import SocialLinks from "./Components/SocialLinks";
 
-export const StyledFooter = styled(Flex)`
-`;
+export const StyledFooter = styled(Flex)``;
 
 export const StyledList = styled.ul`
   list-style: none;
@@ -48,7 +47,7 @@ export const StyledToolsContainer = styled(Flex)`
 `;
 
 export const StyledSocialLinks = styled(SocialLinks)`
-  border-bottom: 1px solid ${darkColors.cardBorder};
+  margin-top: 30px;
 `;
 
 export const StyledText = styled.span`

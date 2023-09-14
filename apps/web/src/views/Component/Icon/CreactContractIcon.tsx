@@ -1,5 +1,4 @@
 export const CreateContractIcon = ({ ...props }) => {
-  console.log(props)
   return (
     <svg
       width={props.width ? props.width : '27'}
