@@ -151,7 +151,7 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
+            
             shrink
             htmlFor="name"
           >
@@ -171,7 +171,7 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
+            
             shrink
             htmlFor="name"
           >
@@ -208,7 +208,7 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            required
+            
             shrink
             htmlFor="name"
           >
