@@ -3,45 +3,30 @@ import { FooterLinkType } from "../../../components/Footer/types";
 
 export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
   {
-    label: t("About"),
+    label: t("Ecosystem"),
+    href: "https://www.poolschain.org/",
     items: [
       {
-        label: t("Contact"),
-        href: "https://docs.pancakeswap.finance/contact-us",
-        isHighlighted: true,
+        label: t("POOLS Scan"),
+        href: "https://scan.poolsmobility.com/",
+        isHighlighted: false,
       },
       {
-        label: t("Brand"),
-        href: "https://docs.pancakeswap.finance/brand",
+        label: t("POOLS Phone"),
+        href: "https://poolsmobility.com/",
       },
-      // {
-      //   label: t("Blog"),
-      //   href: "https://blog.pancakeswap.finance/",
-      // },
-      // {
-      //   label: t("Community"),
-      //   href: "https://docs.pancakeswap.finance/contact-us/telegram",
-      // },
-      // {
-      //   label: t("Litepaper"),
-      //   href: "https://v2litepaper.pancakeswap.finance/",
-      // },
-      // {
-      //   label: t("CAKE Emission Projection"),
-      //   href: "https://analytics.pancakeswap.finance/",
-      // },
-      // {
-      //   label: t("Terms Of Service"),
-      //   href: "https://pancakeswap.finance/terms-of-service",
-      // },
-      // {
-      //   label: "—",
-      // },
-      // {
-      //   label: t("Merchandise"),
-      //   href: "https://merch.pancakeswap.finance/",
-      //   isHighlighted: true,
-      // },
+      {
+        label: t("POOLS Mall"),
+        href: "https://mall.poolsmobility.com/",
+      },
+      {
+        label: t("POOLS Wallet"),
+        href: "https://www.poolschain.org/",
+      },
+      {
+        label: t("NFT Marketplace"),
+        href: "https://v2litepaper.pancakeswap.finance/",
+      },
     ],
   },
   // {
@@ -62,16 +47,18 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
   //   ],
   // },
   {
-    label: t("Developers"),
+    label: t("Gitbook Docs"),
+    href: "https://pools-chain.gitbook.io/documentation/getting-started/background",
+
     items: [
       {
-        label: "Github",
+        label: "Gitbook Docs",
         href: "https://github.com/pancakeswap",
       },
-      {
-        label: t("Documentation"),
-        href: "https://docs.pancakeswap.finance",
-      },
+      // {
+      //   label: t("Documentation"),
+      //   href: "https://docs.pancakeswap.finance",
+      // },
       // {
       //   label: t("Bug Bounty"),
       //   href: "https://docs.pancakeswap.finance/code/bug-bounty",

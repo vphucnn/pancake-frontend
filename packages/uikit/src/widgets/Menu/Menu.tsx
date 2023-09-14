@@ -143,30 +143,36 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
         <Wrapper>
           <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
             {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}
-            <StyledNav>
-              <Flex>
-                <Logo href={homeLink?.href ?? "/"} />
-                <AtomBox display={{ xs: "none", md: "block" }}>
-                  <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
-                </AtomBox>
+            <Flex justifyContent="center">
+              <Flex flexDirection="column" width={["100%", null, "1500px"]}>
+                <StyledNav>
+                  <Flex>
+                    <Logo href={homeLink?.href ?? "/"} />
+                    <Box mt="10px">
+                      <AtomBox display={{ xs: "none", md: "block" }} >
+                        <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
+                      </AtomBox>
+                    </Box>
+                  </Flex>
+                  <Flex alignItems="center" height="100%">
+                    <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
+                      <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
+                    </AtomBox>
+                    <Box mt="4px">
+                      <LangSelector
+                        currentLang={currentLang}
+                        langs={langs}
+                        setLang={setLang}
+                        buttonScale="xs"
+                        color="textSubtle"
+                        hideLanguage
+                      />
+                    </Box>
+                    {rightSide}
+                  </Flex>
+                </StyledNav>
               </Flex>
-              <Flex alignItems="center" height="100%">
-                <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
-                  <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
-                </AtomBox>
-                <Box mt="4px">
-                  <LangSelector
-                    currentLang={currentLang}
-                    langs={langs}
-                    setLang={setLang}
-                    buttonScale="xs"
-                    color="textSubtle"
-                    hideLanguage
-                  />
-                </Box>
-                {rightSide}
-              </Flex>
-            </StyledNav>
+            </Flex>
           </FixedContainer>
           {subLinks ? (
             <Flex justifyContent="space-around" overflow="hidden">

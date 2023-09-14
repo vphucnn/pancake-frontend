@@ -42,9 +42,6 @@ const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props })
             <Link external key={social.label} href={social.href} aria-label={social.label} mr={mr}>
               <Flex>
                 <Icon {...iconProps} />
-                <Text   {...textProps} color="#FFFFFF" mb="24px">
-                  {social.data}
-                </Text>
               </Flex>
             </Link>
           </>
