@@ -45,14 +45,14 @@ const config: (
           label: t('Create NFT contract'),
           href: '/create-nft',
         },
-        {
-          label: t('Airdrop'),
-          href: '/airdrop',
-        },
-        {
-          label: t('Staking'),
-          href: '/pools-staking',
-        },
+        // {
+        //   label: t('Airdrop'),
+        //   href: '/airdrop',
+        // },
+        // {
+        //   label: t('Staking'),
+        //   href: '/pools-staking',
+        // },
         // {
         //   label: t('Liquidity'),
         //   href: '/liquidity',

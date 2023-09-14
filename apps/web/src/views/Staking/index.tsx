@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Unstable_Grid2'
-import { Divider } from '@mui/material'
+import { Divider, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useTranslation } from '@pancakeswap/localization'
 import { useRouter } from 'next/router'
@@ -20,6 +20,8 @@ import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
 import { Bytecode as helloWorldBytecode, Abi as helloWorldTokenAbi } from '../../constract/hello-world.json'
+import { StyledTableRow } from '../Component/Style/StyledTableRow'
+import { StyledTableCell } from '../Component/Style/StyledTableCell'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,6 +30,18 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }))
+
+function createData(name: string, calories: number, fat: number, carbs: number, protein: number) {
+  return { name, calories, fat, carbs, protein }
+}
+
+const rows = [
+  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+  createData('Eclair', 262, 16.0, 24, 6.0),
+  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('Gingerbread', 356, 16.0, 49, 3.9),
+]
 
 export default function Staking() {
   const { currentLanguage, setLanguage, t } = useTranslation()
@@ -125,7 +139,7 @@ export default function Staking() {
               color: '#D1D1D1',
             }}
           >
-            0.00324797  ≈  0.00324797
+            0.00324797 ≈ 0.00324797
           </Typography>
         </Grid>
         <Grid xs={6} md={6} container alignItems="right" justifyContent="right">
@@ -153,202 +167,159 @@ export default function Staking() {
         }}
       />
 
-      <Grid sx={{ pl: 5, pt: 2 }}>
-        <Typography
-          variant="h6"
-          component="h6"
-          sx={{
-            color: '#D1D1D1',
-          }}
-        >
-          Basic setting
-        </Typography>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+      <Grid container sx={{ pl: 5, pt: 2 }}>
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            shrink
-            htmlFor="name"
           >
-            Token Name
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setName)}
-          />
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            shrink
-            htmlFor="name"
           >
-            Symbol
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={symbol}
-            onChange={(event) => handleChange(event.target.value, setSymbol)}
-          />
+            0.00324797 ≈ 0.00324797
+          </Typography>
         </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            required
-            shrink
-            htmlFor="name"
           >
-            Initial supply
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={initialSupply}
-            onChange={(event) => handleChange(event.target.value, setInitialSupply)}
-          />
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            required
-            shrink
-            htmlFor="name"
           >
-            Decimals (0-18)
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={decimals}
-            onChange={(event) => handleChange(event.target.value, setDecimals)}
-          />
+            0.00324797 ≈ 0.00324797
+          </Typography>
         </Grid>
-        <Typography
-          variant="h6"
-          component="h6"
-          sx={{
-            color: '#D1D1D1',
-          }}
-        >
-          Token configuration
-        </Typography>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canBurn}
-            onChange={(event) => handleChange(event.target.checked, setCanBurn)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Burn</Box>
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            0.00324797 ≈ 0.00324797
+          </Typography>
         </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canMint}
-            onChange={(event) => handleChange(event.target.checked, setCanMint)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Mint</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canPause}
-            onChange={(event) => handleChange(event.target.checked, setCanPause)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Pause</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={canBlacklist}
-            onChange={(event) => handleChange(event.target.checked, setCanBlacklist)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Can Blacklist</Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <IOSSwitch
-            checked={applyTxFee}
-            onChange={(event) => handleChange(event.target.checked, setApplyTxFee)}
-            inputProps={{ 'aria-label': 'controlled' }}
-          />
-          <Box sx={{ display: 'inline', ml: 3 }}>Apply Burn Fee (Deflationary token )</Box>
-        </Grid>
+      </Grid>
 
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+      <Grid container sx={{ pl: 5, pt: 2 }}>
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            shrink
-            htmlFor="name"
           >
-            Recipient address
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setRecipientAddress)}
-          />
-          <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
-            Can be updated after initial token creation.
-          </Box>
-        </Grid>
-        <Grid sx={{ mt: 3 }}>
-          <InputLabel
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
             sx={{
               color: '#D1D1D1',
             }}
-            shrink
-            htmlFor="name"
           >
-            Can be updated after initial token creation.
-          </InputLabel>
-          <CTTextField
-            size="small"
-            fullWidth
-            id="name"
-            InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-            value={name}
-            onChange={(event) => handleChange(event.target.value, setTxFee)}
-          />
-          <Box sx={{ display: 'block', mt: 1, ml: 2, fontSize: '0.8rem' }}>
-            Specify the tax / fee in basis points (bps), i.e. 1% is equal to 100 bps. Example: to charge a tax / fee of
-            3.5%, enter the number 350. Can be updated after initial token creation.
-          </Box>
+            0.00324797 ≈ 0.00324797
+          </Typography>
         </Grid>
-        <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>
-          <CTButtom
-            className="show"
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
             sx={{
-              width: '300px',
-              borderRadius: 2,
+              color: '#D1D1D1',
             }}
-            variant="contained"
-            onClick={onSubmit}
           >
-            Create Token
-          </CTButtom>
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            0.00324797 ≈ 0.00324797
+          </Typography>
         </Grid>
+        <Grid xs={4} md={4}>
+          <Typography
+            variant="subtitle1"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            Est. Total Value
+          </Typography>
+          <Typography
+            variant="h6"
+            component="h6"
+            sx={{
+              color: '#D1D1D1',
+            }}
+          >
+            0.00324797 ≈ 0.00324797
+          </Typography>
+        </Grid>
+      </Grid>
+
+      <Grid container sx={{ pl: 5, pt: 2 }}>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <StyledTableRow>
+                <StyledTableCell>Dessert (100g serving)</StyledTableCell>
+                <StyledTableCell align="right">Calories</StyledTableCell>
+                <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+                <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+                <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+              </StyledTableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.name}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                  <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                  <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                  <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Grid>
     </CoinToolLayout>
   )
