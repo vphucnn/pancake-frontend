@@ -8,7 +8,7 @@ import { useTranslation } from '@pancakeswap/localization'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 import { useAccount, useBalance, useNetwork, useWalletClient } from 'wagmi'
-import { useModal, useToast } from '../../../../../packages/uikit/src'
+import { Flex, useModal, useToast } from '../../../../../packages/uikit/src'
 import { CoinToolLayout } from '../../components/Layout/CoinToolLayout'
 import { useMenuItems } from '../../components/Menu/hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from '../../components/Menu/utils'
@@ -19,6 +19,7 @@ import CTTextField from '../Component/CTextField'
 import IOSSwitch from '../Component/IOSSwithc'
 
 import { Abi as ERC721NFTAbi, Bytecode as ERC721NFTBytecode } from '../../constract/ERC721NFT.json'
+import { Button } from '@mui/material'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,6 +29,59 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }))
 
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+})
+
+const BootstrapButton = styled(Button)({
+  boxShadow: 'none',
+  textTransform: 'none',
+  fontSize: 16,
+  padding: '6px 12px',
+  border: '1px solid',
+  lineHeight: 1.5,
+  backgroundColor: 'none',
+  borderColor: 'none',
+  boder: '0px',
+  borderWidth: '0px',
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+  '&.MuiButtonBase-root': {
+    color: '#FFF3BF',
+    'text-decoration': 'underline',
+  },
+  '&:hover': {
+    backgroundColor: 'none',
+    borderColor: 'none',
+    boxShadow: 'none',
+  },
+  '&:active': {
+    boxShadow: 'none',
+    backgroundColor: 'none',
+    borderColor: 'none',
+  },
+  '&:focus': {
+    boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+  },
+})
 export default function CreateNFT() {
   const { currentLanguage, setLanguage, t } = useTranslation()
   const [onUSCitizenModalPresent] = useModal(
@@ -52,7 +106,8 @@ export default function CreateNFT() {
   const [canBlacklist, setCanBlacklist] = React.useState(false)
   const [applyTxFee, setApplyTxFee] = React.useState(false)
   const [mintPrice, setMintPrice] = React.useState(0)
-  const [whiteList, setWhiteList] = React.useState()
+  const [whiteList, setWhiteList] = React.useState('')
+  const { address, isConnected } = useAccount()
   const { data, isError, isLoading } = useBalance({
     address: useAccount().address,
   })
@@ -63,9 +118,12 @@ export default function CreateNFT() {
   const { toastSuccess, toastError } = useToast()
 
   async function onSubmit() {
+    if (!isConnected) {
+      return toastError('You have not connected your wallet yet')
+    }
     let wList = []
     if (enableWhiteList && whiteList) {
-      wList = whiteList
+      wList = whiteList.split(',')
     }
     try {
       const response = await walletClient?.deployContract({
@@ -82,6 +140,18 @@ export default function CreateNFT() {
 
   const handleChange = (value, f) => {
     f(value)
+  }
+
+  const onFileChange = (event) => {
+    const input = event.target.files[0]
+    const reader = new FileReader()
+    reader.onload = function (e) {
+      const text = e.target.result as string
+      let result = text.trim().split('\r\n')
+      setWhiteList(result.toString())
+    }
+    reader.readAsText(input)
+    event.target.value = ''
   }
 
   return (
@@ -242,38 +312,35 @@ export default function CreateNFT() {
         </Grid>
 
         {enableWhiteList ? (
-          <Grid sx={{ mt: 3 }}>
-            <InputLabel
-              sx={{
-                display: 'inline',
-                color: '#D1D1D1',
-              }}
-              shrink
-              htmlFor="name"
-            >
-              Address List
-            </InputLabel>
-            <InputLabel
-              sx={{
-                display: 'inline',
-
-                color: '#D1D1D1',
-                float: 'right',
-              }}
-              shrink
-              htmlFor="name"
-            >
-              Upload File
-            </InputLabel>
-            <CTTextField
-              size="small"
-              fullWidth
-              id="name"
-              InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
-              value={whiteList}
-              onChange={(event) => handleChange(event.target.value, setWhiteList)}
-            />
-          </Grid>
+          <>
+            <Grid sx={{ mt: 3 }}>
+              <InputLabel
+                sx={{
+                  display: 'inline',
+                  color: '#D1D1D1',
+                }}
+                shrink
+                htmlFor="name"
+              >
+                Address List
+              </InputLabel>
+              <Box sx={{ display: 'inline', float: 'right' }}>
+                <BootstrapButton sx={{ color: '#D1D1D1' }} variant="text">
+                  Upload File
+                  <VisuallyHiddenInput type="file" onChange={onFileChange} />
+                </BootstrapButton>
+              </Box>
+            </Grid>
+            <Grid sx={{ mt: 3 }}>
+              <CTTextField
+                fullWidth
+                id="name"
+                InputProps={{ sx: { borderRadius: 3, color: '#9E9E9E' } }}
+                value={whiteList}
+                onChange={(event) => handleChange(event.target.value, setWhiteList)}
+              />
+            </Grid>
+          </>
         ) : null}
 
         <Grid container alignItems="left" justifyContent="left" sx={{ pt: 5 }}>

@@ -61,8 +61,12 @@ export default function CoinTools() {
   const { chain, chains } = useNetwork()
   const [hash, setHash] = React.useState<undefined | `0x${string}`>()
   const { toastSuccess, toastError } = useToast()
+  const { address, isConnected } = useAccount()
 
   async function onSubmit() {
+    if (!isConnected) {
+      return toastError('You have not connected your wallet yet')
+    }
     try {
       let brunAddress = '0x0000000000000000000000000000000000000000'
       let brunFee = 0
