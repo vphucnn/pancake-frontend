@@ -269,7 +269,7 @@ export const CHAINS = [
   // baseGoerli,
   // opbnbTestnet,
   // scrollSepolia,
-  sepoliaETHTestnet,
+  // sepoliaETHTestnet,
   pools,
   poolsTest
 ]
