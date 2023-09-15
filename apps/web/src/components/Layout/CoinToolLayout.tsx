@@ -61,7 +61,7 @@ export const CoinToolLayout: React.FC<React.PropsWithChildren<BoxProps>> = ({ ch
               <>
                 {activeSubMenuItem && activeSubMenuItem.href && (item.href === activeSubMenuItem.href) ? (
                   <CTMenuItem sx={{ m: 3 }}>
-                    {getIconItemMenu(item.href, '#A2A3A4')}
+                    {getIconItemMenu(item.href, 'none')}
                     <Box sx={{ display: 'inline', ml: 1 }}>{item.label}</Box>
                   </CTMenuItem>
                 ) : (
