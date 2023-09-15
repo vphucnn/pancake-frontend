@@ -78,7 +78,7 @@ export default function CoinTools() {
       })
       setHash(response)
     } catch (e) {
-      toastError(e as string)
+      return toastError(e as string)
     }
   }
 

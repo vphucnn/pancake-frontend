@@ -76,7 +76,7 @@ export default function CreateNFT() {
       })
       setHash(response)
     } catch (e) {
-      toastError(e as string)
+      return toastError(e as string)
     }
   }
 
@@ -151,7 +151,6 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            
             shrink
             htmlFor="name"
           >
@@ -171,7 +170,6 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            
             shrink
             htmlFor="name"
           >
@@ -208,7 +206,6 @@ export default function CreateNFT() {
             sx={{
               color: '#D1D1D1',
             }}
-            
             shrink
             htmlFor="name"
           >
